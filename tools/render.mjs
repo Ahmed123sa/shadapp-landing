@@ -51,11 +51,15 @@ export function canonImages(raw) {
 }
 
 /** Copies the pictures the content uses from the admin's media folder into site/media (what nginx serves). */
-export function syncMedia(content, mediaDir, siteMediaDir = resolve(root, 'site/media')) {
+/** Content saved before pictures existed has no `images` key: it inherits the seed's pictures. */
+export const withSeedImages = (c, seed) => (c && c.images === undefined && seed ? { ...c, images: seed.images } : c);
+export const seedMediaDir = resolve(root, 'content/media');
+export function syncMedia(content, mediaDirs, siteMediaDir = resolve(root, 'site/media')) {
+  const dirs = [].concat(mediaDirs);
   for (const e of Object.values(canonImages(content.images))) {
     if (!e.file) continue;
-    const from = resolve(mediaDir, e.file);
-    if (!existsSync(from)) continue;
+    const from = dirs.map((d) => resolve(d, e.file)).find((f) => existsSync(f));
+    if (!from) continue;
     mkdirSync(siteMediaDir, { recursive: true });
     copyFileSync(from, resolve(siteMediaDir, e.file));
   }
@@ -161,12 +165,13 @@ export function render(content, { template, platforms } = {}) {
 /** The published content if the admin has published any, otherwise the seed that ships with the code. */
 export function loadPublished() {
   const live = resolve(process.env.DATA_DIR || resolve(root, 'data'), 'content.json');
-  return JSON.parse(readFileSync(existsSync(live) ? live : paths.content, 'utf8'));
+  const seed = JSON.parse(readFileSync(paths.content, 'utf8'));
+  return existsSync(live) ? withSeedImages(JSON.parse(readFileSync(live, 'utf8')), seed) : seed;
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const content = loadPublished();
-  syncMedia(content, resolve(process.env.DATA_DIR || resolve(root, 'data'), 'media'));
+  syncMedia(content, [resolve(process.env.DATA_DIR || resolve(root, 'data'), 'media'), seedMediaDir]);
   writeFileSync(paths.out, render(content));
   console.log('site/index.html written');
 }

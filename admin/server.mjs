@@ -6,6 +6,7 @@
 // Behind nginx only these three prefixes are proxied here; nginx serves site/ itself.
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { resolve, extname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadConfig, assertConfig, root } from './lib/config.mjs';
@@ -226,7 +227,11 @@ export function createApp(config, { store = createStore({ root, dataDir: config.
         const content = (await store.draft()) ?? (await store.published());
         return send(res, 200, await store.renderHtml(content), { ...securityHeaders(PREVIEW_CSP), 'Content-Type': 'text/html; charset=utf-8', 'X-Robots-Tag': 'noindex' });
       }
-      if (rel.startsWith('/preview/media/')) return serveFile(res, store.paths.media, rel.slice('/preview/media/'.length), { headers: { 'Cache-Control': 'private, max-age=300' } });
+      if (rel.startsWith('/preview/media/')) {
+        const name = rel.slice('/preview/media/'.length);
+        const dir = existsSync(resolve(store.paths.media, name)) ? store.paths.media : store.paths.seedMedia;
+        return serveFile(res, dir, name, { headers: { 'Cache-Control': 'private, max-age=300' } });
+      }
       return serveFile(res, siteDir, rel.slice('/preview/'.length), { headers: { 'Cache-Control': 'no-cache' } });
     }
 

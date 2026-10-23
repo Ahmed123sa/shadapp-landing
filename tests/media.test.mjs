@@ -58,7 +58,9 @@ test('upload: needs a session and CSRF, takes only real PNG/JPG/WebP of the righ
   assert.equal((await upload('og', png(630, 1200))).status, 422, 'og must be landscape');
   assert.equal((await upload('app_screen', png(1200, 630))).status, 422, 'app screen must be portrait');
   assert.equal((await upload('og', png(9000, 5000))).status, 422, 'too many pixels');
-  assert.equal((await upload('og', Buffer.alloc(4_100_000, 1))).status, 413, 'too big');
+  // the server may close the socket as soon as it sees the limit, so a reset also counts as refused
+  const big = await upload('og', Buffer.alloc(4_100_000, 1)).then((r) => r.status, () => 413);
+  assert.equal(big, 413, 'too big');
   const ok = await upload('og', png(1200, 630));
   assert.equal(ok.status, 200);
   const j = await ok.json();

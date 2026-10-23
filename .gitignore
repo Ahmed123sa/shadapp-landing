@@ -13,3 +13,5 @@ site/index.html
 /public/
 # Pictures uploaded from the admin (copied here on publish)
 site/media/
+# Reference exports of the page visuals (not part of the site)
+exports/
