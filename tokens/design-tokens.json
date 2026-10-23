@@ -1,0 +1,714 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "Shad app landing - single source of truth. Brand manual 70/20/10: Charcoal Black #1C1C1C, Soft White #F0F0F0, Deep Crimson #941414. Light tier = soft-white sections, dark tier = the charcoal base the page lives on. Rebuild with: node tools/build-theme.mjs",
+  "primitive": {
+    "$description": "Raw palette. Never referenced from page code.",
+    "charcoal": {
+      "950": {
+        "$type": "color",
+        "$value": "#121212"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#1C1C1C",
+        "$description": "Brand Charcoal Black, 70%."
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#222222"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#2A2A2A"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#3A3A3A"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#4A4A4A"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#7A7A7A"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#969696"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#BDBDBD"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#D9D9D9"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#E6E6E6"
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#F0F0F0",
+        "$description": "Brand Soft White, 20%."
+      },
+      "550": {
+        "$type": "color",
+        "$value": "#5E5E5E"
+      }
+    },
+    "paper": {
+      "$type": "color",
+      "$value": "#F7F7F7"
+    },
+    "crimson": {
+      "500": {
+        "$type": "color",
+        "$value": "#A51818"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#941414",
+        "$description": "Brand Deep Crimson, 10%. Accent and the dot."
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#7A1010"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#5F0C0C"
+      }
+    },
+    "tuscan": {
+      "$type": "color",
+      "$value": "#A8986A"
+    },
+    "green": {
+      "300": {
+        "$type": "color",
+        "$value": "#8FB98B"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#3D6E3A"
+      }
+    },
+    "amber": {
+      "300": {
+        "$type": "color",
+        "$value": "#C9B27A"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#7A5F14"
+      }
+    },
+    "red": {
+      "300": {
+        "$type": "color",
+        "$value": "#E58080"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#A3201A"
+      }
+    }
+  },
+  "semantic": {
+    "$description": "Light tier (soft-white sections).",
+    "surface": {
+      "page": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.50}"
+      },
+      "card": {
+        "$type": "color",
+        "$value": "{primitive.paper}"
+      },
+      "raised": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.100}"
+      },
+      "sunken": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.100}"
+      },
+      "scrim": {
+        "$type": "color",
+        "$value": "rgba(240, 240, 240, 0.92)"
+      }
+    },
+    "text": {
+      "primary": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.900}"
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.600}"
+      },
+      "tertiary": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.550}"
+      },
+      "on-action": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.50}"
+      },
+      "link": {
+        "$type": "color",
+        "$value": "{primitive.crimson.600}"
+      }
+    },
+    "border": {
+      "default": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.200}",
+        "$description": "Decorative hairlines only."
+      },
+      "strong": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.500}",
+        "$description": "3:1 on the page, for control edges."
+      }
+    },
+    "action": {
+      "primary": {
+        "$type": "color",
+        "$value": "{primitive.crimson.600}"
+      },
+      "primary-hover": {
+        "$type": "color",
+        "$value": "{primitive.crimson.700}"
+      },
+      "primary-active": {
+        "$type": "color",
+        "$value": "{primitive.crimson.800}"
+      },
+      "danger": {
+        "$type": "color",
+        "$value": "{primitive.red.700}",
+        "$description": "Destructive only. Unused on this page; kept so intent stays explicit."
+      },
+      "danger-hover": {
+        "$type": "color",
+        "$value": "{primitive.crimson.800}"
+      }
+    },
+    "accent": {
+      "dot": {
+        "$type": "color",
+        "$value": "{primitive.crimson.600}",
+        "$description": "The brand dot. Decorative fills, never text."
+      }
+    },
+    "focus": {
+      "ring": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.900}"
+      }
+    },
+    "feedback": {
+      "success": {
+        "$type": "color",
+        "$value": "{primitive.green.700}"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "{primitive.amber.700}"
+      },
+      "error": {
+        "$type": "color",
+        "$value": "{primitive.red.700}"
+      },
+      "info": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.900}"
+      }
+    }
+  },
+  "component": {
+    "button": {
+      "primary-bg": {
+        "$type": "color",
+        "$value": "{semantic.action.primary}"
+      },
+      "primary-bg-hover": {
+        "$type": "color",
+        "$value": "{semantic.action.primary-hover}"
+      },
+      "primary-bg-active": {
+        "$type": "color",
+        "$value": "{semantic.action.primary-active}"
+      },
+      "primary-text": {
+        "$type": "color",
+        "$value": "{semantic.text.on-action}"
+      },
+      "destructive-bg": {
+        "$type": "color",
+        "$value": "{semantic.action.danger}"
+      },
+      "destructive-text": {
+        "$type": "color",
+        "$value": "{semantic.text.on-action}"
+      },
+      "secondary-bg": {
+        "$type": "color",
+        "$value": "transparent",
+        "$description": "Neutral, never a coloured fill."
+      },
+      "secondary-bg-hover": {
+        "$type": "color",
+        "$value": "{semantic.surface.raised}"
+      },
+      "secondary-text": {
+        "$type": "color",
+        "$value": "{semantic.text.primary}"
+      },
+      "secondary-border": {
+        "$type": "color",
+        "$value": "{semantic.border.strong}"
+      }
+    },
+    "card": {
+      "bg": {
+        "$type": "color",
+        "$value": "{semantic.surface.card}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{semantic.border.default}"
+      }
+    }
+  },
+  "dark": {
+    "$description": "Dark tier: the charcoal base. Swaps at the semantic tier only.",
+    "surface": {
+      "page": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.900}"
+      },
+      "card": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.850}"
+      },
+      "raised": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.800}"
+      },
+      "sunken": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.950}"
+      },
+      "scrim": {
+        "$type": "color",
+        "$value": "rgba(28, 28, 28, 0.92)"
+      }
+    },
+    "text": {
+      "primary": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.50}"
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.300}"
+      },
+      "tertiary": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.400}"
+      },
+      "on-action": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.50}"
+      },
+      "link": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.50}"
+      }
+    },
+    "border": {
+      "default": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.700}"
+      },
+      "strong": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.500}"
+      }
+    },
+    "action": {
+      "primary": {
+        "$type": "color",
+        "$value": "{primitive.crimson.600}"
+      },
+      "primary-hover": {
+        "$type": "color",
+        "$value": "{primitive.crimson.500}"
+      },
+      "primary-active": {
+        "$type": "color",
+        "$value": "{primitive.crimson.700}"
+      },
+      "danger": {
+        "$type": "color",
+        "$value": "{primitive.red.700}"
+      },
+      "danger-hover": {
+        "$type": "color",
+        "$value": "{primitive.crimson.700}"
+      }
+    },
+    "accent": {
+      "dot": {
+        "$type": "color",
+        "$value": "{primitive.crimson.600}"
+      }
+    },
+    "focus": {
+      "ring": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.50}"
+      }
+    },
+    "feedback": {
+      "success": {
+        "$type": "color",
+        "$value": "{primitive.green.300}"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "{primitive.amber.300}"
+      },
+      "error": {
+        "$type": "color",
+        "$value": "{primitive.red.300}"
+      },
+      "info": {
+        "$type": "color",
+        "$value": "{primitive.charcoal.50}"
+      }
+    }
+  },
+  "font": {
+    "family": {
+      "display": {
+        "$type": "fontFamily",
+        "$value": "\"Playfair Display\", \"Aref Ruqaa\", Georgia, serif",
+        "$description": "Brand headline face. Arabic falls to Aref Ruqaa, the nearest open Ruqaa to the manual's Tharwat Emara Ruqaa."
+      },
+      "sans": {
+        "$type": "fontFamily",
+        "$value": "Archivo, Tajawal, system-ui, sans-serif",
+        "$description": "Brand body face. Tajawal is the Arabic body face the app already ships."
+      }
+    },
+    "size": {
+      "xs": {
+        "$type": "dimension",
+        "$value": "0.75rem"
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "0.875rem"
+      },
+      "base": {
+        "$type": "dimension",
+        "$value": "1.0625rem"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "1.25rem"
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "1.5rem"
+      },
+      "2xl": {
+        "$type": "dimension",
+        "$value": "1.875rem"
+      },
+      "3xl": {
+        "$type": "dimension",
+        "$value": "2.375rem"
+      },
+      "4xl": {
+        "$type": "dimension",
+        "$value": "3rem"
+      },
+      "5xl": {
+        "$type": "dimension",
+        "$value": "3.75rem"
+      },
+      "6xl": {
+        "$type": "dimension",
+        "$value": "4.75rem"
+      },
+      "7xl": {
+        "$type": "dimension",
+        "$value": "6rem"
+      },
+      "8xl": {
+        "$type": "dimension",
+        "$value": "7.5rem"
+      }
+    },
+    "weight": {
+      "regular": {
+        "$type": "fontWeight",
+        "$value": 400
+      },
+      "medium": {
+        "$type": "fontWeight",
+        "$value": 500
+      },
+      "semibold": {
+        "$type": "fontWeight",
+        "$value": 600
+      },
+      "bold": {
+        "$type": "fontWeight",
+        "$value": 700
+      }
+    },
+    "leading": {
+      "tight": {
+        "$type": "number",
+        "$value": 1.08
+      },
+      "snug": {
+        "$type": "number",
+        "$value": 1.3
+      },
+      "normal": {
+        "$type": "number",
+        "$value": 1.7
+      }
+    }
+  },
+  "space": {
+    "$description": "4px base unit.",
+    "1": {
+      "$type": "dimension",
+      "$value": "0.25rem"
+    },
+    "2": {
+      "$type": "dimension",
+      "$value": "0.5rem"
+    },
+    "3": {
+      "$type": "dimension",
+      "$value": "0.75rem"
+    },
+    "4": {
+      "$type": "dimension",
+      "$value": "1rem"
+    },
+    "5": {
+      "$type": "dimension",
+      "$value": "1.25rem"
+    },
+    "6": {
+      "$type": "dimension",
+      "$value": "1.5rem"
+    },
+    "8": {
+      "$type": "dimension",
+      "$value": "2rem"
+    },
+    "10": {
+      "$type": "dimension",
+      "$value": "2.5rem"
+    },
+    "12": {
+      "$type": "dimension",
+      "$value": "3rem"
+    },
+    "16": {
+      "$type": "dimension",
+      "$value": "4rem"
+    },
+    "20": {
+      "$type": "dimension",
+      "$value": "5rem"
+    },
+    "24": {
+      "$type": "dimension",
+      "$value": "6rem"
+    },
+    "32": {
+      "$type": "dimension",
+      "$value": "8rem"
+    },
+    "40": {
+      "$type": "dimension",
+      "$value": "10rem"
+    }
+  },
+  "radius": {
+    "sm": {
+      "$type": "dimension",
+      "$value": "0.375rem"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "0.625rem"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "1rem"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "2.25rem",
+      "$description": "Phone frame."
+    },
+    "button": {
+      "$type": "dimension",
+      "$value": "{radius.full}"
+    },
+    "card": {
+      "$type": "dimension",
+      "$value": "{radius.lg}"
+    },
+    "full": {
+      "$type": "dimension",
+      "$value": "9999px"
+    }
+  },
+  "shadow": {
+    "sm": {
+      "$type": "shadow",
+      "$value": "0 1px 2px rgba(0, 0, 0, 0.18)"
+    },
+    "md": {
+      "$type": "shadow",
+      "$value": "0 0.75rem 2rem rgba(0, 0, 0, 0.28)"
+    },
+    "lg": {
+      "$type": "shadow",
+      "$value": "0 2rem 5rem rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(240, 240, 240, 0.06)",
+      "$description": "Only the phone and the floating fragments. Everything else is flat."
+    },
+    "focus-ring": {
+      "$type": "shadow",
+      "$value": "0 0 0 2px {semantic.surface.page}, 0 0 0 4px {semantic.focus.ring}"
+    }
+  },
+  "motion": {
+    "$description": "UI transitions never above 500ms. Scroll choreography is scroll-linked, not timed. Every motion has a prefers-reduced-motion branch.",
+    "duration": {
+      "instant": {
+        "$type": "duration",
+        "$value": "100ms"
+      },
+      "fast": {
+        "$type": "duration",
+        "$value": "150ms"
+      },
+      "normal": {
+        "$type": "duration",
+        "$value": "250ms"
+      },
+      "slow": {
+        "$type": "duration",
+        "$value": "400ms"
+      }
+    },
+    "easing": {
+      "out": {
+        "$type": "cubicBezier",
+        "$value": [
+          0.2,
+          0.7,
+          0.2,
+          1
+        ]
+      },
+      "in": {
+        "$type": "cubicBezier",
+        "$value": [
+          0.4,
+          0,
+          1,
+          1
+        ]
+      },
+      "emphasized": {
+        "$type": "cubicBezier",
+        "$value": [
+          0.2,
+          0,
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "size": {
+    "control": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "2.25rem"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "2.75rem"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "3.25rem"
+      }
+    },
+    "icon": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "1rem"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "1.25rem"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "1.5rem"
+      }
+    },
+    "target-min": {
+      "$type": "dimension",
+      "$value": "1.5rem"
+    },
+    "container": {
+      "$type": "dimension",
+      "$value": "88rem"
+    },
+    "measure": {
+      "$type": "dimension",
+      "$value": "36rem"
+    },
+    "phone": {
+      "$type": "dimension",
+      "$value": "20rem"
+    },
+    "dot": {
+      "$type": "dimension",
+      "$value": "0.875rem"
+    },
+    "line": {
+      "$type": "dimension",
+      "$value": "0.125rem"
+    },
+    "hairline": {
+      "$type": "dimension",
+      "$value": "1px"
+    },
+    "focus": {
+      "$type": "dimension",
+      "$value": "2px"
+    }
+  }
+}
