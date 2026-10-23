@@ -7,12 +7,12 @@
   'use strict';
 
   /* ------------------------------------------------------------ settings */
-  // Paste the store links here when they are ready. Empty = button shows as
+  // Everything an editor can change (store links, page title and description)
+  // comes from window.SHAD, which tools/render.mjs writes into the page from
+  // content/content.json. An empty store link = the button shows as
   // unavailable with a "coming soon" note.
-  var STORE_LINKS = {
-    play: '',
-    apple: ''
-  };
+  var SHAD = window.SHAD || {};
+  var STORE_LINKS = SHAD.stores || {};
 
   var root = document.documentElement;
   var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -25,14 +25,8 @@
   var cssVar = function (name, el) { return getComputedStyle(el || root).getPropertyValue(name).trim(); };
 
   /* ------------------------------------------------------------ language */
-  var TITLES = {
-    ar: 'تطبيق شاد | مشروعك كله في نقطة واحدة',
-    en: 'The Shad app | Your whole project, in one dot'
-  };
-  var DESCS = {
-    ar: 'العقد والتوقيع والدفع والمحادثة والاجتماعات والملفات. كل ما بينك وبين فريق شاد في مكان واحد، على الويب والموبايل.',
-    en: 'Contract, signature, payment, chat, meetings and files. Everything between you and the Shad team in one place, on web and mobile.'
-  };
+  var TITLES = SHAD.titles || {};
+  var DESCS = SHAD.descriptions || {};
   var lang = root.dataset.l === 'en' ? 'en' : 'ar';
   var langListeners = [];
 

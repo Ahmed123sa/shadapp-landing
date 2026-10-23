@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="dark" data-l="ar">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{meta:title}}</title>
+<meta name="description" content="{{meta:description}}">
+<meta name="theme-color" content="#1C1C1C"><!-- ds-allow-hardcode: browser chrome colour, read before any CSS -->
+<meta property="og:title" content="{{meta:og_title}}">
+<meta property="og:description" content="{{meta:og_description}}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_EG">
+<meta property="og:locale:alternate" content="en_US">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js');try{var l=localStorage.getItem('shad-app-lang');if(l==='en'){var h=document.documentElement;h.lang='en';h.dir='ltr';h.dataset.l='en';}}catch(e){}</script>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="wm" viewBox="327.9 353.7 596.5 288.1"><path d="M 774.160156 585.230469 C 774.160156 585.878906 774.164062 586.527344 774.160156 587.175781 C 774.089844 593.847656 774.359375 600.492188 776.035156 606.996094 C 777.058594 610.96875 778.539062 614.742188 781.332031 617.847656 C 785.238281 622.1875 790.207031 623.699219 795.878906 622.929688 C 800.09375 622.355469 803.613281 620.164062 806.902344 617.613281 C 812.222656 613.492188 816.503906 608.40625 820.269531 602.871094 C 827.601562 592.101562 832.75 580.304688 836.183594 567.792969 C 838.976562 557.632812 841.402344 547.378906 843.988281 537.164062 C 846.664062 526.605469 849.417969 516.066406 850.539062 505.1875 C 851.292969 497.875 851.234375 490.59375 849.621094 483.390625 C 848.476562 478.273438 846.617188 473.453125 843.015625 469.507812 C 838.769531 464.847656 833.496094 462.972656 827.234375 463.964844 C 823.167969 464.609375 819.640625 466.441406 816.378906 468.847656 C 811.089844 472.753906 806.980469 477.75 803.308594 483.132812 C 798.277344 490.515625 794.3125 498.464844 790.890625 506.695312 C 784.917969 521.050781 780.71875 535.933594 777.855469 551.191406 C 775.742188 562.4375 774.40625 573.777344 774.160156 585.230469 M 917.964844 359.734375 C 917.511719 361.417969 917.03125 363.089844 916.609375 364.78125 C 909.195312 394.476562 901.789062 424.171875 894.378906 453.871094 C 883.277344 498.359375 872.179688 542.847656 861.074219 587.335938 C 859.578125 593.332031 858.007812 599.3125 856.558594 605.320312 C 855.871094 608.160156 855.914062 611.050781 856.699219 613.886719 C 857.929688 618.3125 861.269531 620.738281 865.878906 620.613281 C 868.390625 620.546875 871.21875 619.734375 873.714844 618.335938 C 873.644531 617.933594 873.574219 617.484375 873.488281 617.039062 C 871.816406 608.527344 873.5 600.882812 879.984375 594.875 C 886.515625 588.820312 894.308594 587.339844 902.671875 590.25 C 911.066406 593.175781 916.207031 599.300781 917.4375 608.070312 C 919.410156 622.171875 910.027344 631.476562 899.824219 633.648438 C 890.507812 635.632812 880.996094 631.558594 876.089844 623.414062 C 875.820312 622.96875 875.546875 622.523438 875.144531 621.859375 C 874.640625 622.390625 874.210938 622.828125 873.792969 623.285156 C 869.839844 627.597656 865.332031 631.144531 859.789062 633.203125 C 854.609375 635.128906 849.289062 635.914062 843.816406 634.710938 C 835.796875 632.949219 830.851562 627.835938 828.441406 620.175781 C 826.660156 614.5 826.394531 608.726562 827.894531 602.917969 C 828.179688 601.800781 828.433594 600.675781 828.476562 599.46875 C 828.097656 600.125 827.714844 600.777344 827.34375 601.4375 C 823.367188 608.496094 818.871094 615.179688 813.175781 620.992188 C 807.167969 627.121094 800.273438 631.8125 791.84375 633.953125 C 783.53125 636.0625 775.371094 635.78125 767.496094 632.101562 C 761.671875 629.378906 757.1875 625.121094 753.628906 619.835938 C 749.246094 613.328125 746.730469 606.078125 745.21875 598.445312 C 743.4375 589.425781 743.179688 580.328125 743.71875 571.171875 C 745.050781 548.546875 750.773438 527.0625 760.453125 506.609375 C 766.027344 494.832031 772.871094 483.859375 781.546875 474.09375 C 787.976562 466.855469 795.183594 460.5625 803.859375 456.109375 C 810.742188 452.578125 818 450.597656 825.804688 450.957031 C 835.683594 451.414062 843.273438 455.734375 848.296875 464.328125 C 851.070312 469.066406 852.683594 474.230469 853.519531 479.617188 C 854.101562 483.378906 854.417969 487.183594 854.867188 491.074219 C 855.027344 490.609375 855.195312 490.195312 855.304688 489.765625 C 863.261719 458.203125 871.234375 426.644531 879.136719 395.070312 C 880.078125 391.308594 880.835938 387.472656 881.296875 383.625 C 881.621094 380.910156 881.515625 378.09375 881.222656 375.359375 C 880.765625 371.113281 878.742188 367.511719 875.65625 364.589844 C 873.996094 363.015625 872.121094 361.664062 870.300781 360.269531 C 869.730469 359.832031 869.136719 359.488281 869.117188 358.675781 L 917.964844 358.675781 C 917.964844 359.027344 917.964844 359.382812 917.964844 359.734375 "/><path d="M 568.25 358.675781 C 564.632812 373.121094 561.011719 387.5625 557.40625 402.011719 C 552.226562 422.742188 547.0625 443.476562 541.890625 464.207031 C 540.082031 471.460938 538.261719 478.710938 536.453125 485.960938 C 536.328125 486.46875 536.246094 486.980469 536.34375 487.597656 C 536.6875 487.085938 537.042969 486.578125 537.375 486.054688 C 541.941406 478.796875 547.089844 471.992188 553.363281 466.101562 C 559.449219 460.390625 566.253906 455.824219 574.300781 453.308594 C 581 451.214844 587.820312 450.59375 594.726562 451.976562 C 606.289062 454.289062 613.328125 461.375 616.007812 472.734375 C 617.828125 480.453125 617.339844 488.207031 615.429688 495.84375 C 606.496094 531.589844 597.496094 567.320312 588.535156 603.0625 C 587.777344 606.097656 587.238281 609.15625 587.699219 612.324219 C 588.523438 618.003906 592.761719 621.292969 598.457031 620.476562 C 600.015625 620.253906 601.613281 619.90625 603.050781 619.285156 C 605.09375 618.402344 607.007812 617.222656 608.96875 616.152344 C 609.460938 615.886719 609.921875 615.5625 610.703125 615.070312 C 610.597656 615.777344 610.652344 616.152344 610.492188 616.386719 C 605.457031 623.851562 599.417969 630.191406 590.71875 633.371094 C 585.296875 635.351562 579.71875 635.875 574.023438 634.550781 C 565.535156 632.574219 560.335938 627.289062 558.351562 618.878906 C 556.984375 613.082031 557.425781 607.285156 558.871094 601.558594 C 566.722656 570.453125 574.601562 539.351562 582.449219 508.246094 C 583.714844 503.226562 584.957031 498.195312 586.082031 493.140625 C 586.914062 489.394531 587.269531 485.570312 587.007812 481.726562 C 586.910156 480.328125 586.695312 478.910156 586.34375 477.554688 C 584.972656 472.308594 581.359375 469.273438 575.953125 468.632812 C 569.417969 467.855469 563.453125 469.554688 557.839844 472.769531 C 552.496094 475.832031 548.113281 480 544.324219 484.8125 C 538.539062 492.167969 534.535156 500.460938 531.429688 509.234375 C 528.925781 516.296875 527.328125 523.609375 525.507812 530.855469 C 521.03125 548.667969 516.625 566.496094 512.183594 584.316406 C 508.441406 599.339844 504.699219 614.359375 500.949219 629.378906 C 500.78125 630.054688 500.574219 630.722656 500.359375 631.472656 L 471.375 631.472656 C 471.421875 631.070312 471.425781 630.6875 471.515625 630.320312 C 475.035156 616.035156 478.566406 601.75 482.09375 587.464844 C 490.15625 554.835938 498.21875 522.207031 506.28125 489.574219 C 514 458.316406 521.722656 427.058594 529.433594 395.800781 C 530.546875 391.28125 531.515625 386.738281 531.949219 382.089844 C 532.675781 374.246094 530.308594 367.6875 524.0625 362.695312 C 522.914062 361.777344 521.707031 360.925781 520.492188 360.097656 C 519.957031 359.730469 519.582031 359.367188 519.753906 358.675781 Z M 568.25 358.675781 "/><path d="M 332.925781 634.808594 C 333.515625 630.976562 371.113281 486.476562 371.96875 485.03125 C 372.148438 485.621094 372.347656 486.003906 372.367188 486.394531 C 372.449219 488.335938 372.503906 490.28125 372.53125 492.226562 C 372.6875 504.3125 371.894531 516.367188 371.222656 528.425781 C 370.542969 540.71875 369.992188 553.019531 369.523438 565.324219 C 369.214844 573.394531 369.546875 581.464844 370.414062 589.5 C 371.179688 596.605469 372.4375 603.617188 375.339844 610.210938 C 376.210938 612.195312 377.246094 614.140625 378.433594 615.953125 C 382.636719 622.378906 388.644531 626.070312 396.285156 626.613281 C 407.792969 627.433594 418.414062 624.769531 427.671875 617.609375 C 433.769531 612.894531 438.207031 606.855469 441.496094 599.949219 C 444.765625 593.082031 446.6875 585.820312 447.578125 578.28125 C 448.199219 573.0625 448.449219 567.839844 447.984375 562.585938 C 447.28125 554.652344 444.882812 547.269531 440.953125 540.367188 C 437.128906 533.65625 432.257812 527.746094 426.765625 522.367188 C 420.449219 516.179688 413.953125 510.175781 407.554688 504.074219 C 402.214844 498.980469 397.148438 493.636719 392.785156 487.664062 C 387.253906 480.09375 383.296875 471.816406 381.542969 462.558594 C 380.617188 457.679688 380.304688 452.753906 380.460938 447.789062 C 380.75 438.601562 382.183594 429.621094 385.253906 420.941406 C 390.957031 404.835938 400.75 391.949219 415.476562 383.023438 C 424.175781 377.75 433.648438 374.699219 443.734375 373.519531 C 456.929688 371.976562 469.710938 373.730469 482.15625 378.277344 C 485.914062 379.648438 489.648438 381.148438 493.628906 381.785156 C 499.152344 382.664062 504.199219 381.613281 508.496094 377.867188 C 510.085938 376.476562 511.570312 374.964844 513.367188 373.59375 C 508.71875 392.324219 504.089844 411.058594 499.421875 429.785156 C 494.753906 448.523438 490.136719 467.277344 485.4375 486.007812 C 485.273438 485.992188 485.105469 485.980469 484.941406 485.96875 C 484.847656 485.675781 484.6875 485.390625 484.667969 485.09375 C 484.457031 481.625 484.214844 478.15625 484.085938 474.683594 C 483.785156 466.617188 483.605469 458.546875 483.25 450.484375 C 482.734375 438.769531 481.945312 427.074219 479.753906 415.527344 C 478.585938 409.382812 477.027344 403.347656 474.449219 397.617188 C 473.164062 394.757812 471.621094 392.054688 469.65625 389.597656 C 465.246094 384.089844 459.539062 381.253906 452.449219 381.390625 C 440.074219 381.628906 429.625 386.171875 421.375 395.484375 C 416.449219 401.046875 413.070312 407.484375 410.964844 414.574219 C 407.488281 426.316406 407 438.101562 410.730469 449.894531 C 412.925781 456.824219 416.539062 463.011719 420.917969 468.773438 C 426.074219 475.558594 432.144531 481.492188 438.238281 487.40625 C 444.078125 493.070312 449.945312 498.707031 455.648438 504.507812 C 460.324219 509.265625 464.4375 514.511719 467.933594 520.214844 C 474.027344 530.148438 477.128906 540.902344 477.050781 552.59375 C 476.957031 566.351562 474.339844 579.546875 468.136719 591.867188 C 457.261719 613.460938 440.183594 627.515625 416.546875 633.253906 C 408.949219 635.101562 401.207031 635.617188 393.367188 635.023438 C 384.214844 634.332031 375.511719 632.003906 367.015625 628.664062 C 363.460938 627.265625 359.855469 625.9375 356.175781 624.910156 C 350.691406 623.382812 345.503906 624.429688 340.890625 627.734375 C 338.792969 629.238281 336.941406 631.082031 334.996094 632.789062 C 334.339844 633.367188 333.742188 634.011719 332.925781 634.808594 "/><path d="M 716.875 495.367188 C 716.976562 491.382812 716.707031 486.917969 715.847656 482.503906 C 715.015625 478.246094 713.644531 474.191406 711.058594 470.640625 C 708.375 466.949219 704.832031 464.601562 700.261719 463.90625 C 695.898438 463.242188 691.832031 464.195312 687.945312 466.144531 C 684.101562 468.070312 680.835938 470.761719 677.863281 473.824219 C 672.816406 479.023438 668.796875 484.972656 665.277344 491.265625 C 658.1875 503.933594 653.175781 517.4375 649.320312 531.386719 C 645.058594 546.816406 642.3125 562.507812 641.417969 578.507812 C 640.988281 586.226562 640.828125 593.9375 641.871094 601.621094 C 642.484375 606.136719 643.542969 610.519531 645.710938 614.589844 C 649.953125 622.566406 658.390625 624.359375 665.195312 621.53125 C 668.445312 620.179688 671.332031 618.277344 674.007812 616.03125 C 679.296875 611.59375 683.566406 606.269531 687.304688 600.507812 C 693.84375 590.441406 698.640625 579.5625 701.648438 567.984375 C 705.855469 551.804688 709.769531 535.550781 713.65625 519.292969 C 715.496094 511.605469 716.582031 503.785156 716.875 495.367188 M 722.777344 488.378906 C 731.410156 471.011719 743.40625 457.34375 762.777344 450.75 C 762.523438 451.652344 762.398438 452.179688 762.226562 452.695312 C 756.054688 471.058594 750.496094 489.609375 745.796875 508.402344 C 742.601562 521.191406 739.691406 534.054688 736.660156 546.882812 C 732.152344 565.957031 727.652344 585.035156 723.144531 604.109375 C 722.402344 607.246094 722.140625 610.394531 722.925781 613.550781 C 724.222656 618.761719 728.425781 621.476562 733.71875 620.578125 C 737.398438 619.953125 740.628906 618.289062 743.695312 616.25 C 744.207031 615.910156 744.738281 615.59375 745.582031 615.0625 C 745.464844 615.789062 745.507812 616.160156 745.347656 616.394531 C 739.945312 624.371094 733.445312 631.03125 723.894531 633.921875 C 718.835938 635.457031 713.691406 635.855469 708.554688 634.355469 C 700.210938 631.914062 695.5 626.097656 693.5625 617.839844 C 692.328125 612.574219 692.714844 607.308594 693.730469 602.058594 C 693.886719 601.253906 694.050781 600.453125 693.984375 599.511719 C 693.691406 600.003906 693.382812 600.492188 693.105469 600.992188 C 689.71875 607.078125 686.019531 612.957031 681.488281 618.273438 C 677.527344 622.929688 673.101562 627.074219 667.71875 630.046875 C 658.390625 635.199219 648.546875 636.738281 638.191406 633.816406 C 631.230469 631.855469 625.800781 627.660156 621.53125 621.90625 C 617.140625 615.984375 614.527344 609.265625 612.851562 602.152344 C 610.726562 593.144531 610.140625 583.992188 610.484375 574.773438 C 611.324219 552.316406 616.535156 530.867188 625.671875 510.363281 C 631.527344 497.214844 638.871094 484.972656 648.449219 474.148438 C 653.472656 468.476562 659.023438 463.386719 665.398438 459.25 C 671.1875 455.492188 677.378906 452.691406 684.226562 451.507812 C 689.640625 450.570312 695.039062 450.632812 700.355469 452.085938 C 708.542969 454.320312 714.273438 459.503906 717.984375 467.027344 C 720.332031 471.78125 721.597656 476.847656 722.214844 482.085938 C 722.464844 484.175781 722.59375 486.28125 722.777344 488.378906 "/></symbol>
+  <symbol id="mark" viewBox="375 282 330 516"><path fill-rule="evenodd" d="M438.5 792.4C409.9 785.1 392.9 765.2 384.3 729.0C380.9 714.7 380.0 680.7 382.4 659.5C389.8 595.8 417.2 533.2 455.3 493.3C487.1 460.1 525.1 448.0 553.7 462.0C569.6 469.9 581.3 491.6 583.5 517.8C583.9 522.3 584.6 526.2 585.0 526.5C585.4 526.7 586.8 522.3 588.2 516.7C589.6 511.1 599.8 470.6 610.9 426.6C622.0 382.7 631.7 342.5 632.5 337.3C634.2 326.1 633.2 314.2 630.0 308.1C627.8 303.7 622.3 297.7 615.0 291.8L610.5 288.1L655.4 288.0L700.2 288.0L699.8 291.2C699.5 293.0 674.0 395.7 643.0 519.4L586.6 744.3L587.8 750.8C589.0 758.0 591.1 761.6 595.8 764.3C599.8 766.6 609.1 766.7 614.6 764.5L618.5 763.0L618.5 750.7C618.5 738.9 618.6 738.2 621.8 731.8C630.0 715.1 648.2 705.7 665.5 709.3C676.0 711.5 683.2 715.3 689.4 722.1C695.9 729.1 699.0 736.5 699.7 747.0C701.0 765.1 692.5 779.6 676.1 787.4C669.9 790.3 668.8 790.5 658.5 790.5C648.7 790.5 646.9 790.2 641.8 787.8C635.5 784.9 627.9 778.3 624.4 772.8L622.1 769.2L615.0 776.0C607.0 783.6 595.5 790.0 585.9 792.1C577.1 793.9 563.6 792.9 556.9 789.8C541.8 782.9 534.0 768.7 534.0 748.1C534.0 742.8 534.5 736.8 535.1 734.7C536.7 728.9 535.6 729.2 532.0 735.7C521.5 754.4 502.7 774.9 488.7 782.8C475.6 790.3 468.5 792.3 453.5 792.6C446.4 792.8 439.6 792.7 438.5 792.4ZM481.6 769.5C493.0 766.1 510.5 750.2 522.4 732.2C535.6 712.4 544.5 691.9 551.9 664.5C559.3 637.1 572.8 581.6 574.4 572.0C579.6 541.1 578.2 518.8 570.0 501.3C559.8 479.4 537.8 473.7 516.9 487.6C481.4 511.2 449.4 586.2 438.8 671.0C438.1 677.1 437.5 691.7 437.5 706.0C437.5 728.0 437.8 731.4 439.8 739.4C445.1 760.3 455.5 770.7 471.6 770.9C474.4 771.0 478.9 770.3 481.6 769.5Z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
+  <symbol id="i-login" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="m10 17 5-5-5-5"/><path d="M15 12H3"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/></symbol>
+  <symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+</svg>
+
+<a class="skip" href="#main">{{t:header.01}}</a>
+
+<canvas id="stage" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="top" id="top-bar">
+  <div class="wrap top__in">
+    <a class="brand" href="#top" data-ar-label="شاد، إلى أعلى الصفحة" data-en-label="Shad, back to top" aria-label="شاد، إلى أعلى الصفحة">
+      <svg class="brand__mark" aria-hidden="true"><use href="#mark"/></svg>
+      <span class="brand__name">{{t:header.02}}</span>
+    </a>
+    <nav class="top__nav" data-ar-label="الأقسام" data-en-label="Sections" aria-label="الأقسام">
+      <a href="#journey">{{t:header.03}}</a>
+      <a href="#daily">{{t:header.04}}</a>
+      <a href="#team">{{t:header.05}}</a>
+      <a href="#app">{{t:header.06}}</a>
+      <a href="#contact">{{t:header.07}}</a>
+    </nav>
+    <div class="top__end">
+      <button class="btn btn--ghost btn--sm lang" type="button" id="lang" data-ar-label="Switch to English" data-en-label="التبديل إلى العربية" aria-label="Switch to English">
+        <svg class="ico" aria-hidden="true"><use href="#i-globe"/></svg>
+        <span class="ar" lang="en">EN</span><span class="en">عربي</span>
+      </button>
+      <a class="btn btn--secondary btn--sm" href="{{link:client_login}}">
+        <svg class="ico" aria-hidden="true"><use href="#i-login"/></svg>
+        {{t:header.08}}
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- 1. HERO: the noise -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="noise-chips" aria-hidden="true">
+      <span class="nchip nchip--1"><svg class="ico"><use href="#i-file"/></svg>{{t:hero.01}}</span>
+      <span class="nchip nchip--2"><svg class="ico"><use href="#i-chat"/></svg>{{t:hero.02}}</span>
+      <span class="nchip nchip--3"><svg class="ico"><use href="#i-cal"/></svg>{{t:hero.03}}</span>
+      <span class="nchip nchip--4"><svg class="ico"><use href="#i-file"/></svg>{{t:hero.04}}</span>
+      <span class="nchip nchip--5"><svg class="ico"><use href="#i-card"/></svg>{{t:hero.05}}</span>
+      <span class="nchip nchip--6"><svg class="ico"><use href="#i-pen"/></svg>{{t:hero.06}}</span>
+    </div>
+    <div class="wrap hero__in">
+      <p class="label">{{t:hero.07}}</p>
+      <h1 class="display display--hero" id="hero-title">
+        <span class="ln">{{t:hero.08}}</span>
+        <span class="ln">{{t:hero.09}}</span>
+      </h1>
+      <p class="lede hero__lede">{{t:hero.10}}</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="{{link:client_login}}">
+          {{t:hero.11}}
+          <svg class="ico ico--dir" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+        <a class="btn btn--secondary" href="#app">
+          <svg class="ico" aria-hidden="true"><use href="#i-download"/></svg>
+          {{t:hero.12}}
+        </a>
+      </div>
+      <a class="scroll-cue" href="#noise">
+        <span class="scroll-cue__line" aria-hidden="true"></span>
+        {{t:hero.13}}
+      </a>
+    </div>
+  </section>
+
+  <!-- 2. THE USUAL WAY -->
+  <section class="sec noise" id="noise" aria-labelledby="noise-title">
+    <div class="wrap noise__grid">
+      <p class="label">{{t:noise.01}}</p>
+      <h2 class="display display--xl statement" id="noise-title" data-words>{{t:noise.02}}</h2>
+      <ol class="noise__list">
+        <li><span class="idx" aria-hidden="true">01</span><span>{{t:noise.03}}</span></li>
+        <li><span class="idx" aria-hidden="true">02</span><span>{{t:noise.04}}</span></li>
+        <li><span class="idx" aria-hidden="true">03</span><span>{{t:noise.05}}</span></li>
+        <li><span class="idx" aria-hidden="true">04</span><span>{{t:noise.06}}</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 3. THE DOT -->
+  <section class="sec idea" id="idea" aria-labelledby="idea-title">
+    <div class="wrap idea__in">
+      <span class="big-dot" id="big-dot" aria-hidden="true"></span>
+      <p class="label">{{t:idea.01}}</p>
+      <h2 class="display display--xxl" id="idea-title">{{t:idea.02}}</h2>
+      <p class="lede idea__lede">{{t:idea.03}}</p>
+    </div>
+  </section>
+
+  <!-- 4. JOURNEY -->
+  <section class="sec journey" id="journey" aria-labelledby="journey-title">
+    <div class="wrap">
+      <header class="sec__head">
+        <p class="label">{{t:journey.01}}</p>
+        <h2 class="display display--xl" id="journey-title">{{t:journey.02}}</h2>
+        <p class="lede">{{t:journey.03}}</p>
+      </header>
+
+      <div class="journey__body">
+        <div class="stage" id="stage-frames" aria-hidden="true">
+          <div class="stage__frame">
+            <!-- 1 contract -->
+            <figure class="frag frag--contract is-active" data-step="0">
+              <div class="frag__bar"><span class="frag__eyebrow">{{t:journey.04}}</span><span class="pill pill--wait">{{t:journey.05}}</span></div>
+              <p class="frag__title">{{t:journey.06}}</p>
+              <p class="frag__num">16,530 <small>{{t:journey.07}}</small></p>
+              <ul class="frag__rows">
+                <li><span>{{t:journey.08}}</span><span>9</span></li>
+                <li><span>{{t:journey.09}}</span><span>{{t:journey.10}}</span></li>
+                <li><span>{{t:journey.11}}</span><span>2</span></li>
+              </ul>
+              <div class="frag__actions"><span class="fbtn fbtn--ghost">{{t:journey.12}}</span><span class="fbtn fbtn--primary">{{t:journey.13}}</span></div>
+            </figure>
+            <!-- 2 documents -->
+            <figure class="frag frag--docs" data-step="1">
+              <div class="frag__bar"><span class="frag__eyebrow">{{t:journey.14}}</span><span class="pill">2 / 2</span></div>
+              <ul class="doclist">
+                <li><svg class="ico"><use href="#i-file"/></svg><span class="doclist__name">{{t:journey.15}}</span><span class="pill pill--ok"><svg class="ico ico--xs"><use href="#i-check"/></svg>{{t:journey.16}}</span></li>
+                <li><svg class="ico"><use href="#i-file"/></svg><span class="doclist__name">{{t:journey.17}}</span><span class="pill pill--wait">{{t:journey.18}}</span></li>
+                <li><svg class="ico"><use href="#i-file"/></svg><span class="doclist__name">{{t:journey.19}}</span><span class="pill pill--wait">{{t:journey.20}}</span></li>
+              </ul>
+              <div class="dropzone"><svg class="ico"><use href="#i-upload"/></svg>{{t:journey.21}}</div>
+            </figure>
+            <!-- 3 signature -->
+            <figure class="frag frag--sign" data-step="2">
+              <div class="frag__bar"><span class="frag__eyebrow">{{t:journey.22}}</span><span class="seg"><span class="seg__on">{{t:journey.23}}</span><span>{{t:journey.24}}</span><span>{{t:journey.25}}</span></span></div>
+              <div class="sigpad">
+                <svg class="sigpad__ink" viewBox="0 0 300 90" preserveAspectRatio="none"><path class="ink" pathLength="1" d="M18 62 C 30 20, 44 18, 48 58 S 66 22, 78 52 S 98 70, 112 40 S 140 30, 150 54 S 176 60, 196 42 C 214 30, 240 34, 282 36"/></svg>
+                <span class="sigpad__line"></span>
+              </div>
+              <p class="frag__note"><svg class="ico ico--xs"><use href="#i-lock"/></svg>{{t:journey.26}}</p>
+            </figure>
+            <!-- 4 payment -->
+            <figure class="frag frag--pay" data-step="3">
+              <div class="frag__bar"><span class="frag__eyebrow">{{t:journey.27}}</span><span class="pill">{{t:journey.28}}</span></div>
+              <ul class="frag__rows frag__rows--money">
+                <li><span>{{t:journey.29}}</span><span>14,500 <small>{{t:journey.30}}</small></span></li>
+                <li><span>{{t:journey.31}}</span><span>2,030 <small>{{t:journey.32}}</small></span></li>
+                <li class="is-total"><span>{{t:journey.33}}</span><span>16,530 <small>{{t:journey.34}}</small></span></li>
+                <li><span>{{t:journey.35}}</span><span>16,530 <small>{{t:journey.36}}</small></span></li>
+              </ul>
+              <div class="frag__actions"><span class="fbtn fbtn--primary fbtn--wide"><svg class="ico ico--xs"><use href="#i-upload"/></svg>{{t:journey.37}}</span></div>
+            </figure>
+            <!-- 5 active -->
+            <figure class="frag frag--live" data-step="4">
+              <div class="frag__bar"><span class="frag__eyebrow">{{t:journey.38}}</span><span class="pill pill--ok"><i class="sdot" aria-hidden="true"></i>{{t:journey.39}}</span></div>
+              <p class="frag__title frag__title--lg">{{t:journey.40}}<i class="dot-mark" aria-hidden="true"></i></p>
+              <div class="tabs-mini"><span class="is-on">{{t:journey.41}}</span><span>{{t:journey.42}}</span><span>{{t:journey.43}}</span><span>{{t:journey.44}}</span><span>{{t:journey.45}}</span></div>
+              <div class="track">
+                <span class="track__step is-done">{{t:journey.46}}</span><span class="track__step is-done">{{t:journey.47}}</span><span class="track__step is-done">{{t:journey.48}}</span><span class="track__step is-now">{{t:journey.49}}</span>
+              </div>
+            </figure>
+          </div>
+          <p class="stage__note">{{t:journey.50}}</p>
+        </div>
+
+        <ol class="steps" id="steps">
+          <li class="step" data-step="0">
+            <span class="step__n" aria-hidden="true">1</span>
+            <h3 class="step__t">{{t:journey.51}}</h3>
+            <p class="step__p">{{t:journey.52}}</p>
+          </li>
+          <li class="step" data-step="1">
+            <span class="step__n" aria-hidden="true">2</span>
+            <h3 class="step__t">{{t:journey.53}}</h3>
+            <p class="step__p">{{t:journey.54}}</p>
+          </li>
+          <li class="step" data-step="2">
+            <span class="step__n" aria-hidden="true">3</span>
+            <h3 class="step__t">{{t:journey.55}}</h3>
+            <p class="step__p">{{t:journey.56}}</p>
+          </li>
+          <li class="step" data-step="3">
+            <span class="step__n" aria-hidden="true">4</span>
+            <h3 class="step__t">{{t:journey.57}}</h3>
+            <p class="step__p">{{t:journey.58}}</p>
+          </li>
+          <li class="step" data-step="4">
+            <span class="step__n" aria-hidden="true">5</span>
+            <h3 class="step__t">{{t:journey.59}}</h3>
+            <p class="step__p">{{t:journey.60}}</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. DAY TO DAY -->
+  <section class="sec daily" id="daily" aria-labelledby="daily-title">
+    <div class="wrap">
+      <header class="sec__head">
+        <p class="label">{{t:daily.01}}</p>
+        <h2 class="display display--xl" id="daily-title">{{t:daily.02}}</h2>
+      </header>
+
+      <div class="bento">
+        <article class="tile tile--lead">
+          <div class="tile__text">
+            <h3 class="tile__t"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg>{{t:daily.03}}</h3>
+            <p>{{t:daily.04}}</p>
+          </div>
+          <div class="chat" aria-hidden="true">
+            <div class="msg msg--them"><span class="msg__who">{{t:daily.05}}</span>{{t:daily.06}}</div>
+            <div class="msg msg--card">
+              <span class="msg__who">{{t:daily.07}}</span>
+              <span class="msg__file"><svg class="ico ico--xs"><use href="#i-file"/></svg>cover_v2.png</span>
+              <span class="msg__acts"><span class="fbtn fbtn--ghost fbtn--sm">{{t:daily.08}}</span><span class="fbtn fbtn--primary fbtn--sm">{{t:daily.09}}</span></span>
+            </div>
+            <div class="msg msg--me">{{t:daily.10}}</div>
+          </div>
+        </article>
+
+        <article class="tile tile--meet">
+          <h3 class="tile__t"><svg class="ico" aria-hidden="true"><use href="#i-video"/></svg>{{t:daily.11}}</h3>
+          <p>{{t:daily.12}}</p>
+          <div class="toasts" aria-hidden="true">
+            <div class="toast"><svg class="ico ico--xs"><use href="#i-bell"/></svg><span><b>{{t:daily.13}}</b>{{t:daily.14}}</span></div>
+            <div class="toast toast--now"><svg class="ico ico--xs"><use href="#i-video"/></svg><span><b>{{t:daily.15}}</b>{{t:daily.16}}</span></div>
+          </div>
+        </article>
+
+        <article class="tile tile--files">
+          <h3 class="tile__t"><svg class="ico" aria-hidden="true"><use href="#i-file"/></svg>{{t:daily.17}}</h3>
+          <p>{{t:daily.18}}</p>
+          <ul class="mini-files" aria-hidden="true">
+            <li><span>logo_final.ai</span><span class="pill pill--ok">{{t:daily.19}}</span></li>
+            <li><span>menu_ar.pdf</span><span class="pill pill--wait">{{t:daily.20}}</span></li>
+            <li><span>photos_day1.zip</span><span class="pill pill--edit">{{t:daily.21}}</span></li>
+          </ul>
+        </article>
+
+        <article class="tile tile--pay">
+          <h3 class="tile__t"><svg class="ico" aria-hidden="true"><use href="#i-card"/></svg>{{t:daily.22}}</h3>
+          <p>{{t:daily.23}}</p>
+          <div class="bars" aria-hidden="true">
+            <span class="bars__b is-paid"></span><span class="bars__b is-paid"></span><span class="bars__b is-next"></span><span class="bars__b"></span>
+          </div>
+          <p class="bars__legend" aria-hidden="true"><span>{{t:daily.24}}</span><span>{{t:daily.25}}</span></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="iris-gap" aria-hidden="true"><div class="iris-gap__pin"><span class="iris"></span></div></div>
+
+  <!-- 6. YOUR TEAM (light) -->
+  <section class="sec team" id="team" data-theme="light" aria-labelledby="team-title">
+    <div class="wrap team__grid">
+      <header class="team__head">
+        <p class="label">{{t:team.01}}</p>
+        <h2 class="display display--xl" id="team-title">{{t:team.02}}</h2>
+        <p class="lede">{{t:team.03}}</p>
+        <p class="team__try"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg>{{t:team.04}}</p>
+      </header>
+
+      <div class="perm" role="group" data-ar-label="مثال على صلاحيات الفريق" data-en-label="Team permissions example" aria-label="مثال على صلاحيات الفريق">
+        <div class="perm__row">
+          <span class="avatar" aria-hidden="true">{{t:team.05}}</span>
+          <span class="perm__who"><b>{{t:team.06}}</b><small>{{t:team.07}}</small></span>
+          <div class="perm__chips">
+            <button class="chip" type="button" aria-pressed="true" disabled>{{t:team.08}}</button>
+          </div>
+          <p class="perm__sum">{{t:team.09}}</p>
+        </div>
+        <div class="perm__row" data-person>
+          <span class="avatar" aria-hidden="true">{{t:team.10}}</span>
+          <span class="perm__who"><b>{{t:team.11}}</b><small>{{t:team.12}}</small></span>
+          <div class="perm__chips">
+            <button class="chip" type="button" aria-pressed="true" data-k="pay">{{t:team.13}}</button>
+            <button class="chip" type="button" aria-pressed="false" data-k="chat">{{t:team.14}}</button>
+            <button class="chip" type="button" aria-pressed="false" data-k="files">{{t:team.15}}</button>
+            <button class="chip" type="button" aria-pressed="false" data-k="contracts">{{t:team.16}}</button>
+          </div>
+          <p class="perm__sum" aria-live="polite"></p>
+        </div>
+        <div class="perm__row" data-person>
+          <span class="avatar" aria-hidden="true">{{t:team.17}}</span>
+          <span class="perm__who"><b>{{t:team.18}}</b><small>{{t:team.19}}</small></span>
+          <div class="perm__chips">
+            <button class="chip" type="button" aria-pressed="false" data-k="pay">{{t:team.20}}</button>
+            <button class="chip" type="button" aria-pressed="true" data-k="chat">{{t:team.21}}</button>
+            <button class="chip" type="button" aria-pressed="true" data-k="files">{{t:team.22}}</button>
+            <button class="chip" type="button" aria-pressed="false" data-k="contracts">{{t:team.23}}</button>
+          </div>
+          <p class="perm__sum" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. THE APP -->
+  <section class="sec app" id="app" aria-labelledby="app-title">
+    <div class="wrap app__grid">
+      <div class="app__text">
+        <p class="label">{{t:app.01}}</p>
+        <h2 class="display display--xl" id="app-title">{{t:app.02}}</h2>
+        <p class="lede">{{t:app.03}}</p>
+        <div class="stores">
+          <a class="store" id="store-play" href="#" data-store="play">
+            <svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>
+            <span><small>{{t:app.04}}</small>Google Play</span>
+          </a>
+          <a class="store" id="store-apple" href="#" data-store="apple">
+            <svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>
+            <span><small>{{t:app.05}}</small>App Store</span>
+          </a>
+        </div>
+        <p class="stores__note" id="stores-note">{{t:app.06}}</p>
+      </div>
+
+      <div class="phone-wrap" aria-hidden="true">
+        <div class="phone">
+          <div class="phone__notch"></div>
+          <div class="phone__top"><span>9:41</span><svg class="phone__mark"><use href="#mark"/></svg></div>
+          <p class="phone__h">{{t:app.07}}</p>
+          <ul class="notifs">
+            <li class="notif notif--new"><span class="notif__ic"><svg class="ico ico--xs"><use href="#i-video"/></svg></span><span><b>{{t:app.08}}</b><small>{{t:app.09}}</small></span><time>{{t:app.10}}</time></li>
+            <li class="notif notif--new"><span class="notif__ic"><svg class="ico ico--xs"><use href="#i-file"/></svg></span><span><b>{{t:app.11}}</b><small>{{t:app.12}}</small></span><time>{{t:app.13}}</time></li>
+            <li class="notif"><span class="notif__ic"><svg class="ico ico--xs"><use href="#i-check"/></svg></span><span><b>{{t:app.14}}</b><small>16,530 {{t:app.15}}</small></span><time>{{t:app.16}}</time></li>
+            <li class="notif"><span class="notif__ic"><svg class="ico ico--xs"><use href="#i-chat"/></svg></span><span><b>{{t:app.17}}</b><small>{{t:app.18}}</small></span><time>{{t:app.19}}</time></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. TRUST -->
+  <section class="sec trust" id="trust" aria-labelledby="trust-title">
+    <div class="wrap">
+      <header class="sec__head">
+        <p class="label">{{t:trust.01}}</p>
+        <h2 class="display display--xl" id="trust-title">{{t:trust.02}}</h2>
+      </header>
+      <ol class="trust__list">
+        <li class="trust__row trust__row--lead">
+          <span class="trust__n" aria-hidden="true">01</span>
+          <h3 class="trust__t"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg>{{t:trust.03}}</h3>
+          <p>{{t:trust.04}}</p>
+        </li>
+        <li class="trust__row">
+          <span class="trust__n" aria-hidden="true">02</span>
+          <h3 class="trust__t"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg>{{t:trust.05}}</h3>
+          <p>{{t:trust.06}}</p>
+        </li>
+        <li class="trust__row">
+          <span class="trust__n" aria-hidden="true">03</span>
+          <h3 class="trust__t"><svg class="ico" aria-hidden="true"><use href="#i-history"/></svg>{{t:trust.07}}</h3>
+          <p>{{t:trust.08}}</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 9. CTA -->
+  <section class="sec cta" id="contact" aria-labelledby="cta-title">
+    <div class="wrap cta__in">
+      <p class="label">{{t:contact.01}}</p>
+      <h2 class="display display--hero cta__t" id="cta-title">{{t:contact.02}}</h2>
+      <p class="lede">{{t:contact.03}}</p>
+      <div class="actions">
+        <a class="btn btn--primary btn--lg" href="{{link:client_login}}">
+          {{t:contact.04}}
+          <svg class="ico ico--dir" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+        <a class="btn btn--secondary btn--lg" href="{{link:team_login}}">{{t:contact.05}}</a>
+      </div>
+      <dl class="contacts">
+        <div class="contact">
+          <dt>{{t:contact.06}}</dt>
+          <dd>
+            <a class="contact__mail" href="mailto:{{email:official}}" dir="ltr">{{email:official}}</a>
+            <button class="btn btn--ghost btn--icon copy" type="button" data-copy="{{email:official}}" data-ar-label="انسخ عنوان التواصل" data-en-label="Copy general address" aria-label="انسخ عنوان التواصل">
+              <svg class="ico ico-copy" aria-hidden="true"><use href="#i-copy"/></svg><svg class="ico ico-done" aria-hidden="true"><use href="#i-check"/></svg>
+            </button>
+          </dd>
+        </div>
+        <div class="contact">
+          <dt>{{t:contact.07}}</dt>
+          <dd>
+            <a class="contact__mail" href="mailto:{{email:support}}" dir="ltr">{{email:support}}</a>
+            <button class="btn btn--ghost btn--icon copy" type="button" data-copy="{{email:support}}" data-ar-label="انسخ عنوان الدعم" data-en-label="Copy support address" aria-label="انسخ عنوان الدعم">
+              <svg class="ico ico-copy" aria-hidden="true"><use href="#i-copy"/></svg><svg class="ico ico-done" aria-hidden="true"><use href="#i-check"/></svg>
+            </button>
+          </dd>
+        </div>
+      </dl>
+      {{social:contact}}
+      <p class="sr-status" id="copy-status" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <svg class="foot__wm" role="img" aria-label="Shad"><use href="#wm"/></svg>
+    <p class="foot__line">{{t:footer.01}}</p>
+    {{social:foot}}
+    <p class="foot__copy">© 2026 {{t:footer.02}}</p>
+  </div>
+</footer>
+
+{{config}}
+<script src="vendor/gsap.min.js" defer></script>
+<script src="vendor/ScrollTrigger.min.js" defer></script>
+<script src="vendor/lenis.min.js" defer></script>
+<script src="vendor/three.min.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

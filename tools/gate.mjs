@@ -8,7 +8,8 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const kit = resolve(process.argv[2] || process.env.UX_KIT || 'G:/coding/Skills/ux-ui-agent-skills/ux-ui-agent-skills');
-const page = resolve(root, 'index.html');
+const site = resolve(root, 'site');
+const page = resolve(site, 'index.html');
 const S = (f) => `"${resolve(kit, 'scripts', f)}"`;
 const q = (f) => `"${f}"`;
 
@@ -16,9 +17,9 @@ const checks = [
   ['Tokens: valid DTCG, aliases resolve', `python3 ${S('validate_tokens.py')} ${q(resolve(root, 'tokens/design-tokens.json'))}`],
   ['Tokens: WCAG contrast pairs, light + dark', `python3 ${S('validate_contrast.py')} ${q(resolve(root, 'tokens/design-tokens.json'))}`],
   ['Token build: every alias resolves', `node ${S('build_tokens.mjs')} --check --in ${q(resolve(root, 'tokens/design-tokens.json'))}`],
-  ['No hardcoded hex/px/ms/font in page code', `python3 ${S('lint_hardcodes.py')} ${q(resolve(root, 'index.html'))} ${q(resolve(root, 'assets/css/site.css'))} ${q(resolve(root, 'assets/js/site.js'))}`],
-  ['Every var(--...) resolves to the theme', `python3 ${S('validate_theme_refs.py')} --theme ${q(resolve(root, 'assets/css/tokens.css'))} ${q(resolve(root, 'assets/css/site.css'))}`],
-  ['No emoji anywhere', `python3 ${S('check_no_emoji.py')} ${q(resolve(root, 'index.html'))} ${q(resolve(root, 'assets'))} ${q(resolve(root, 'README.md'))}`],
+  ['No hardcoded hex/px/ms/font in page code', `python3 ${S('lint_hardcodes.py')} ${q(page)} ${q(resolve(site, 'assets/css/site.css'))} ${q(resolve(site, 'assets/js/site.js'))}`],
+  ['Every var(--...) resolves to the theme', `python3 ${S('validate_theme_refs.py')} --theme ${q(resolve(site, 'assets/css/tokens.css'))} ${q(resolve(site, 'assets/css/site.css'))}`],
+  ['No emoji anywhere', `python3 ${S('check_no_emoji.py')} ${q(page)} ${q(resolve(site, 'assets'))} ${q(resolve(root, 'README.md'))} ${q(resolve(root, 'content/content.json'))}`],
   ['No native select', `python3 ${S('lint_native_select.py')} ${q(root)}`],
   ['Real-render WCAG contrast', `node ${S('measure_render.mjs')} ${q(page)}`],
   ['State-aware WCAG (default / hover / focus)', `node ${S('verify_states.mjs')} ${q(page)}`],

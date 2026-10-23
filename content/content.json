@@ -1,0 +1,766 @@
+{
+  "version": 1,
+  "meta": {
+    "title": {
+      "ar": "تطبيق شاد | مشروعك كله في نقطة واحدة",
+      "en": "The Shad app | Your whole project, in one dot"
+    },
+    "description": {
+      "ar": "العقد والتوقيع والدفع والمحادثة والاجتماعات والملفات. كل ما بينك وبين فريق شاد في مكان واحد، على الويب والموبايل.",
+      "en": "Contract, signature, payment, chat, meetings and files. Everything between you and the Shad team in one place, on web and mobile."
+    },
+    "og_title": {
+      "ar": "تطبيق شاد | مشروعك كله في نقطة واحدة",
+      "en": "The Shad app | Your whole project, in one dot"
+    },
+    "og_description": {
+      "ar": "كل ما بينك وبين فريق شاد في مكان واحد، على الويب والموبايل.",
+      "en": "Everything between you and the Shad team in one place, on web and mobile."
+    }
+  },
+  "links": {
+    "client_login": "https://shadmanagement.co/client-login",
+    "team_login": "https://shadmanagement.co/login",
+    "play": "",
+    "apple": ""
+  },
+  "emails": {
+    "official": "official@shadmanagement.co",
+    "support": "support@shadmanagement.co"
+  },
+  "social": [
+    {
+      "platform": "facebook",
+      "url": ""
+    },
+    {
+      "platform": "instagram",
+      "url": ""
+    },
+    {
+      "platform": "tiktok",
+      "url": ""
+    },
+    {
+      "platform": "whatsapp",
+      "number": ""
+    }
+  ],
+  "sections": {
+    "meta": "عنوان الصفحة ووصفها",
+    "header": "الشريط العلوي",
+    "hero": "البداية",
+    "noise": "الطريقة المعتادة",
+    "idea": "الفكرة",
+    "journey": "رحلتك",
+    "daily": "المزايا اليومية",
+    "team": "فريقك",
+    "app": "التطبيق",
+    "trust": "الثقة",
+    "contact": "التواصل",
+    "social": "السوشيال ميديا",
+    "footer": "الفوتر"
+  },
+  "text": {
+    "header.01": {
+      "ar": "انتقل إلى المحتوى",
+      "en": "Skip to content"
+    },
+    "header.02": {
+      "ar": "تطبيق شاد",
+      "en": "Shad app"
+    },
+    "header.03": {
+      "ar": "رحلتك",
+      "en": "Your journey"
+    },
+    "header.04": {
+      "ar": "المزايا",
+      "en": "Features"
+    },
+    "header.05": {
+      "ar": "فريقك",
+      "en": "Your team"
+    },
+    "header.06": {
+      "ar": "التطبيق",
+      "en": "The app"
+    },
+    "header.07": {
+      "ar": "تواصل",
+      "en": "Contact"
+    },
+    "header.08": {
+      "ar": "دخول",
+      "en": "Sign in"
+    },
+    "hero.01": {
+      "ar": "عقد_نهائي_v3_معدل.pdf",
+      "en": "contract_FINAL_v3_edit.pdf"
+    },
+    "hero.02": {
+      "ar": "هل وصل التحويل؟",
+      "en": "Did the transfer arrive?"
+    },
+    "hero.03": {
+      "ar": "متى الاجتماع بالضبط؟",
+      "en": "When is the meeting again?"
+    },
+    "hero.04": {
+      "ar": "أين آخر نسخة؟",
+      "en": "Where is the latest version?"
+    },
+    "hero.05": {
+      "ar": "أرسل الإيصال مرة أخرى",
+      "en": "Send the receipt again"
+    },
+    "hero.06": {
+      "ar": "وقّعت على أي نسخة؟",
+      "en": "Which version did you sign?"
+    },
+    "hero.07": {
+      "ar": "تطبيق شاد لعملائنا",
+      "en": "The Shad app, for our clients"
+    },
+    "hero.08": {
+      "ar": "مشروعك كله،",
+      "en": "Your whole project,"
+    },
+    "hero.09": {
+      "ar": "في نقطة واحدة{dot}",
+      "en": "in one dot{dot}"
+    },
+    "hero.10": {
+      "ar": "العقد والتوقيع والدفع والمحادثة والاجتماعات والملفات. كل ما بينك وبين فريق شاد في مكان واحد، على الويب والموبايل.",
+      "en": "Contract, signature, payment, chat, meetings and files. Everything between you and the Shad team in one place, on web and mobile."
+    },
+    "hero.11": {
+      "ar": "ادخل حسابك",
+      "en": "Sign in to your account"
+    },
+    "hero.12": {
+      "ar": "حمّل التطبيق",
+      "en": "Get the app"
+    },
+    "hero.13": {
+      "ar": "مرّر لترى كيف",
+      "en": "Scroll to see how"
+    },
+    "noise.01": {
+      "ar": "الطريقة المعتادة",
+      "en": "The usual way"
+    },
+    "noise.02": {
+      "ar": "المشروع يضيع في الطريق، لا في العمل.",
+      "en": "Projects get lost on the way, not in the work."
+    },
+    "noise.03": {
+      "ar": "العقد في البريد، والتعديلات في واتساب.",
+      "en": "The contract is in email. The edits are in WhatsApp."
+    },
+    "noise.04": {
+      "ar": "الإيصال صورة في محادثة قديمة.",
+      "en": "The receipt is a photo in an old chat."
+    },
+    "noise.05": {
+      "ar": "موعد الاجتماع في رسالة لا يجدها أحد.",
+      "en": "The meeting time is in a message nobody can find."
+    },
+    "noise.06": {
+      "ar": "آخر نسخة من الملف؟ لا أحد متأكد.",
+      "en": "The latest file? Nobody is sure."
+    },
+    "idea.01": {
+      "ar": "الفكرة",
+      "en": "The idea"
+    },
+    "idea.02": {
+      "ar": "حتى يصل إلى النقطة.",
+      "en": "Until it reaches the dot."
+    },
+    "idea.03": {
+      "ar": "لكل عميل في شاد مساحة عمل واحدة. فيها عقده ودفعاته ومحادثته مع مدير حسابه، وفي كل خطوة تعرف ما المطلوب منك وما الذي ننتظره نحن.",
+      "en": "Every Shad client gets one workspace. It holds the contract, the payments and the chat with your account manager, and at every step you know what we need from you and what we are waiting on."
+    },
+    "journey.01": {
+      "ar": "رحلتك معنا",
+      "en": "Your journey with us"
+    },
+    "journey.02": {
+      "ar": "خمس خطوات، ثم نبدأ.",
+      "en": "Five steps, then we start."
+    },
+    "journey.03": {
+      "ar": "نفس الخطوات التي ستراها عند أول دخول. التطبيق يخبرك دائمًا بالخطوة التالية.",
+      "en": "The same steps you will see the first time you sign in. The app always tells you what comes next."
+    },
+    "journey.04": {
+      "ar": "عقد رئيسي",
+      "en": "Main contract"
+    },
+    "journey.05": {
+      "ar": "بانتظار موافقتك",
+      "en": "Awaiting you"
+    },
+    "journey.06": {
+      "ar": "الهوية والقائمة",
+      "en": "Menu & identity"
+    },
+    "journey.07": {
+      "ar": "ج.م",
+      "en": "EGP"
+    },
+    "journey.08": {
+      "ar": "البنود",
+      "en": "Clauses"
+    },
+    "journey.09": {
+      "ar": "مدة التنفيذ",
+      "en": "Duration"
+    },
+    "journey.10": {
+      "ar": "6 أسابيع",
+      "en": "6 weeks"
+    },
+    "journey.11": {
+      "ar": "المستندات المطلوبة",
+      "en": "Documents needed"
+    },
+    "journey.12": {
+      "ar": "اطلب تعديلًا",
+      "en": "Request edit"
+    },
+    "journey.13": {
+      "ar": "موافقة",
+      "en": "Approve"
+    },
+    "journey.14": {
+      "ar": "المستندات المطلوبة",
+      "en": "Required documents"
+    },
+    "journey.15": {
+      "ar": "السجل التجاري",
+      "en": "Commercial register"
+    },
+    "journey.16": {
+      "ar": "معتمد",
+      "en": "Approved"
+    },
+    "journey.17": {
+      "ar": "البطاقة الضريبية، صفحة 1",
+      "en": "Tax card, page 1"
+    },
+    "journey.18": {
+      "ar": "قيد المراجعة",
+      "en": "In review"
+    },
+    "journey.19": {
+      "ar": "البطاقة الضريبية، صفحة 2",
+      "en": "Tax card, page 2"
+    },
+    "journey.20": {
+      "ar": "قيد المراجعة",
+      "en": "In review"
+    },
+    "journey.21": {
+      "ar": "أضف ملفًا آخر",
+      "en": "Add another file"
+    },
+    "journey.22": {
+      "ar": "توقيعك",
+      "en": "Your signature"
+    },
+    "journey.23": {
+      "ar": "رسم",
+      "en": "Draw"
+    },
+    "journey.24": {
+      "ar": "كتابة",
+      "en": "Type"
+    },
+    "journey.25": {
+      "ar": "رفع",
+      "en": "Upload"
+    },
+    "journey.26": {
+      "ar": "يُحفظ مرة واحدة ويُستخدم عند كل موافقة.",
+      "en": "Saved once, used on every approval."
+    },
+    "journey.27": {
+      "ar": "الدفعة الأولى",
+      "en": "First payment"
+    },
+    "journey.28": {
+      "ar": "الخطوة 4 من 5",
+      "en": "Step 4 of 5"
+    },
+    "journey.29": {
+      "ar": "قيمة العقد",
+      "en": "Contract value"
+    },
+    "journey.30": {
+      "ar": "ج.م",
+      "en": "EGP"
+    },
+    "journey.31": {
+      "ar": "الضريبة (14%)",
+      "en": "Tax (14%)"
+    },
+    "journey.32": {
+      "ar": "ج.م",
+      "en": "EGP"
+    },
+    "journey.33": {
+      "ar": "الإجمالي",
+      "en": "Total"
+    },
+    "journey.34": {
+      "ar": "ج.م",
+      "en": "EGP"
+    },
+    "journey.35": {
+      "ar": "المتبقي",
+      "en": "Remaining"
+    },
+    "journey.36": {
+      "ar": "ج.م",
+      "en": "EGP"
+    },
+    "journey.37": {
+      "ar": "ارفع الإيصال",
+      "en": "Upload receipt"
+    },
+    "journey.38": {
+      "ar": "مساحة عملك",
+      "en": "Your workspace"
+    },
+    "journey.39": {
+      "ar": "مفعّلة",
+      "en": "Active"
+    },
+    "journey.40": {
+      "ar": "مخبز النيل",
+      "en": "Nile Bakery"
+    },
+    "journey.41": {
+      "ar": "العقود",
+      "en": "Contracts"
+    },
+    "journey.42": {
+      "ar": "الدفعات",
+      "en": "Payments"
+    },
+    "journey.43": {
+      "ar": "المحادثة",
+      "en": "Chat"
+    },
+    "journey.44": {
+      "ar": "الملفات",
+      "en": "Files"
+    },
+    "journey.45": {
+      "ar": "الاجتماعات",
+      "en": "Meetings"
+    },
+    "journey.46": {
+      "ar": "أُرسل",
+      "en": "Sent"
+    },
+    "journey.47": {
+      "ar": "وافقت",
+      "en": "You approved"
+    },
+    "journey.48": {
+      "ar": "اعتمدت شاد",
+      "en": "Shad approved"
+    },
+    "journey.49": {
+      "ar": "نشط",
+      "en": "Active"
+    },
+    "journey.50": {
+      "ar": "بيانات توضيحية",
+      "en": "Sample data"
+    },
+    "journey.51": {
+      "ar": "استلم العقد",
+      "en": "Receive the contract"
+    },
+    "journey.52": {
+      "ar": "يصلك العقد بالبنود والقيمة والمدة. اقرأه كاملًا، ووافق عليه أو اطلب تعديلًا.",
+      "en": "The contract arrives with its clauses, value and timeline. Read it in full, then approve it or ask for an edit."
+    },
+    "journey.53": {
+      "ar": "ارفع المستندات",
+      "en": "Upload the documents"
+    },
+    "journey.54": {
+      "ar": "قائمة بما نحتاجه بالضبط. ارفع أكثر من ملف للطلب الواحد، واحذف ما رفعته ما دام لم يُعتمد بعد.",
+      "en": "A list of exactly what we need. Add more than one file per request, and remove your own uploads until they are approved."
+    },
+    "journey.55": {
+      "ar": "وقّع إلكترونيًا",
+      "en": "Sign electronically"
+    },
+    "journey.56": {
+      "ar": "ارسم توقيعك أو اكتبه مرة واحدة. يُستخدم عند كل موافقة، ولا يستطيع أحد غيرك الموافقة باسمك.",
+      "en": "Draw or type your signature once. It is used on every approval, and nobody else can approve in your name."
+    },
+    "journey.57": {
+      "ar": "ادفع وارفع الإيصال",
+      "en": "Pay and upload the receipt"
+    },
+    "journey.58": {
+      "ar": "ترى القيمة والضريبة والمتبقي. ادفع بالطريقة التي تناسبك، وارفع الإيصال من نفس الشاشة.",
+      "en": "See the value, the tax and what is left. Pay the way that suits you and upload the receipt from the same screen."
+    },
+    "journey.59": {
+      "ar": "تُفتح مساحة عملك",
+      "en": "Your workspace opens"
+    },
+    "journey.60": {
+      "ar": "بعد الاعتماد يبدأ العمل، ويصلك إشعار في كل مرة يأتي فيها دورك.",
+      "en": "Once approved, the work starts, and you get a notification every time it is your turn."
+    },
+    "daily.01": {
+      "ar": "بعد البداية",
+      "en": "Day to day"
+    },
+    "daily.02": {
+      "ar": "كل يوم، في نفس المكان.",
+      "en": "Every day, in the same place."
+    },
+    "daily.03": {
+      "ar": "المحادثة",
+      "en": "Chat"
+    },
+    "daily.04": {
+      "ar": "تحدّث مع مدير حسابك وفريقه مباشرة. والموافقات تصلك داخل المحادثة نفسها: توافق أو تطلب تعديلًا بضغطة.",
+      "en": "Talk to your account manager and their team directly. Approval requests land inside the chat: approve or ask for an edit in one tap."
+    },
+    "daily.05": {
+      "ar": "طه، مدير حسابك",
+      "en": "Taha, your account manager"
+    },
+    "daily.06": {
+      "ar": "صباح الخير. أرسلنا تصميم الغلاف الجديد للمراجعة.",
+      "en": "Morning. The new cover design is up for your review."
+    },
+    "daily.07": {
+      "ar": "طلب موافقة",
+      "en": "Approval request"
+    },
+    "daily.08": {
+      "ar": "اطلب تعديلًا",
+      "en": "Request edit"
+    },
+    "daily.09": {
+      "ar": "موافقة",
+      "en": "Approve"
+    },
+    "daily.10": {
+      "ar": "ممتاز، موافق. لنكمل.",
+      "en": "Looks great, approved. Let's go."
+    },
+    "daily.11": {
+      "ar": "الاجتماعات",
+      "en": "Meetings"
+    },
+    "daily.12": {
+      "ar": "الموعد بتوقيتك ورابط الانضمام جاهز. يصلك تذكير قبل الاجتماع بخمس دقائق، وآخر عند بدايته.",
+      "en": "The time in your time zone, the join link ready. A reminder five minutes before, and another when it starts."
+    },
+    "daily.13": {
+      "ar": "الاجتماع يبدأ بعد 5 دقائق",
+      "en": "Meeting starts in 5 minutes"
+    },
+    "daily.14": {
+      "ar": "مراجعة الحملة، 11:00 ص",
+      "en": "Campaign review, 11:00 AM"
+    },
+    "daily.15": {
+      "ar": "بدأ الاجتماع الآن",
+      "en": "The meeting has started"
+    },
+    "daily.16": {
+      "ar": "انضم من هنا",
+      "en": "Join from here"
+    },
+    "daily.17": {
+      "ar": "الملفات",
+      "en": "Files"
+    },
+    "daily.18": {
+      "ar": "كل ملف في مكانه وبحالته.",
+      "en": "Every file in its place, with its status."
+    },
+    "daily.19": {
+      "ar": "معتمد",
+      "en": "Approved"
+    },
+    "daily.20": {
+      "ar": "قيد المراجعة",
+      "en": "In review"
+    },
+    "daily.21": {
+      "ar": "مطلوب تعديل",
+      "en": "Needs edits"
+    },
+    "daily.22": {
+      "ar": "الدفعات",
+      "en": "Payments"
+    },
+    "daily.23": {
+      "ar": "جدول الأقساط واضح: ما دفعته، وما تبقى، وموعد كل دفعة.",
+      "en": "A clear schedule: what you paid, what is left and when each payment is due."
+    },
+    "daily.24": {
+      "ar": "2 من 4 مدفوعة",
+      "en": "2 of 4 paid"
+    },
+    "daily.25": {
+      "ar": "التالية 1 نوفمبر",
+      "en": "Next: 1 Nov"
+    },
+    "team.01": {
+      "ar": "فريقك",
+      "en": "Your team"
+    },
+    "team.02": {
+      "ar": "أضف فريقك، وحدّد ما يراه كل شخص.",
+      "en": "Add your team. Decide what each person sees."
+    },
+    "team.03": {
+      "ar": "المدير المالي يرى الدفعات فقط، ومسؤول التسويق يتابع المحادثة والملفات. أنت تحدد الصلاحيات، وتغيّرها متى شئت.",
+      "en": "Your finance lead sees payments only. Your marketing lead follows the chat and the files. You set the permissions and change them any time."
+    },
+    "team.04": {
+      "ar": "جرّب: اضغط على أي صلاحية لتغييرها.",
+      "en": "Try it: press any permission to change it."
+    },
+    "team.05": {
+      "ar": "م",
+      "en": "M"
+    },
+    "team.06": {
+      "ar": "منى فتحي",
+      "en": "Mona Fathy"
+    },
+    "team.07": {
+      "ar": "صاحبة الحساب",
+      "en": "Account owner"
+    },
+    "team.08": {
+      "ar": "كل شيء",
+      "en": "Everything"
+    },
+    "team.09": {
+      "ar": "صاحب الحساب يرى كل شيء دائمًا.",
+      "en": "The account owner always sees everything."
+    },
+    "team.10": {
+      "ar": "ك",
+      "en": "K"
+    },
+    "team.11": {
+      "ar": "كريم سالم",
+      "en": "Karim Salem"
+    },
+    "team.12": {
+      "ar": "المدير المالي",
+      "en": "Finance lead"
+    },
+    "team.13": {
+      "ar": "الدفعات",
+      "en": "Payments"
+    },
+    "team.14": {
+      "ar": "المحادثة",
+      "en": "Chat"
+    },
+    "team.15": {
+      "ar": "الملفات",
+      "en": "Files"
+    },
+    "team.16": {
+      "ar": "العقود",
+      "en": "Contracts"
+    },
+    "team.17": {
+      "ar": "ن",
+      "en": "N"
+    },
+    "team.18": {
+      "ar": "نور عادل",
+      "en": "Nour Adel"
+    },
+    "team.19": {
+      "ar": "مسؤولة التسويق",
+      "en": "Marketing lead"
+    },
+    "team.20": {
+      "ar": "الدفعات",
+      "en": "Payments"
+    },
+    "team.21": {
+      "ar": "المحادثة",
+      "en": "Chat"
+    },
+    "team.22": {
+      "ar": "الملفات",
+      "en": "Files"
+    },
+    "team.23": {
+      "ar": "العقود",
+      "en": "Contracts"
+    },
+    "app.01": {
+      "ar": "على الموبايل",
+      "en": "On your phone"
+    },
+    "app.02": {
+      "ar": "مشروعك في جيبك.",
+      "en": "Your project, in your pocket."
+    },
+    "app.03": {
+      "ar": "نفس الحساب على أندرويد وآيفون. الإشعار يصلك فور أن يحتاج مشروعك منك شيئًا، فلا تفوتك موافقة ولا موعد.",
+      "en": "The same account on Android and iPhone. A notification reaches you the moment your project needs something, so you never miss an approval or a meeting."
+    },
+    "app.04": {
+      "ar": "حمّله من",
+      "en": "Get it on"
+    },
+    "app.05": {
+      "ar": "حمّله من",
+      "en": "Download on the"
+    },
+    "app.06": {
+      "ar": "روابط المتاجر تُضاف قريبًا.",
+      "en": "Store links are coming soon."
+    },
+    "app.07": {
+      "ar": "الإشعارات",
+      "en": "Notifications"
+    },
+    "app.08": {
+      "ar": "الاجتماع يبدأ بعد 5 دقائق",
+      "en": "Meeting starts in 5 minutes"
+    },
+    "app.09": {
+      "ar": "مراجعة الحملة",
+      "en": "Campaign review"
+    },
+    "app.10": {
+      "ar": "الآن",
+      "en": "now"
+    },
+    "app.11": {
+      "ar": "عقد جديد بانتظار موافقتك",
+      "en": "A new contract needs your approval"
+    },
+    "app.12": {
+      "ar": "إدارة السوشيال ميديا",
+      "en": "Social media retainer"
+    },
+    "app.13": {
+      "ar": "12 د",
+      "en": "12m"
+    },
+    "app.14": {
+      "ar": "تم اعتماد دفعتك",
+      "en": "Your payment was approved"
+    },
+    "app.15": {
+      "ar": "ج.م",
+      "en": "EGP"
+    },
+    "app.16": {
+      "ar": "أمس",
+      "en": "1d"
+    },
+    "app.17": {
+      "ar": "رسالة من طه",
+      "en": "Message from Taha"
+    },
+    "app.18": {
+      "ar": "أرسلنا الملفات النهائية.",
+      "en": "The final files are up."
+    },
+    "app.19": {
+      "ar": "أمس",
+      "en": "1d"
+    },
+    "trust.01": {
+      "ar": "الثقة",
+      "en": "Trust"
+    },
+    "trust.02": {
+      "ar": "واضح لك، ومحفوظ لك.",
+      "en": "Clear to you. Kept for you."
+    },
+    "trust.03": {
+      "ar": "موافقتك باسمك وحدك",
+      "en": "Your approval is yours alone"
+    },
+    "trust.04": {
+      "ar": "كل موافقة مرتبطة بتوقيعك وبوقتها. لا يستطيع مدير الحساب ولا غيره الموافقة نيابة عنك.",
+      "en": "Every approval carries your signature and its time. Neither your account manager nor anyone else can approve for you."
+    },
+    "trust.05": {
+      "ar": "كل شخص يرى ما يخصه",
+      "en": "Everyone sees only their part"
+    },
+    "trust.06": {
+      "ar": "أعضاء فريقك يرون ما سمحت به فقط، ولا يرى أي عميل آخر شيئًا من مشروعك.",
+      "en": "Your team sees only what you allow, and no other client can see anything of yours."
+    },
+    "trust.07": {
+      "ar": "لكل خطوة تاريخ",
+      "en": "Every step has a date"
+    },
+    "trust.08": {
+      "ar": "كل عقد ودفعة وموافقة محفوظة بتاريخها، تعود إليها متى أردت.",
+      "en": "Every contract, payment and approval is kept with its date, ready when you need it."
+    },
+    "contact.01": {
+      "ar": "ابدأ الآن",
+      "en": "Start now"
+    },
+    "contact.02": {
+      "ar": "خذ الاختصار{pulse}",
+      "en": "Take the shortcut{pulse}"
+    },
+    "contact.03": {
+      "ar": "عميل لدى شاد؟ ادخل حسابك. لديك سؤال؟ راسلنا وسنرد عليك.",
+      "en": "A Shad client? Sign in. A question? Write to us and we will get back to you."
+    },
+    "contact.04": {
+      "ar": "دخول العملاء",
+      "en": "Client sign in"
+    },
+    "contact.05": {
+      "ar": "دخول فريق شاد",
+      "en": "Shad team sign in"
+    },
+    "contact.06": {
+      "ar": "للتواصل",
+      "en": "General"
+    },
+    "contact.07": {
+      "ar": "الدعم الفني",
+      "en": "Support"
+    },
+    "footer.01": {
+      "ar": "أقل ضجيجًا. طرق أقصر. نتائج أقوى.",
+      "en": "Less noise. Shorter paths. Stronger results."
+    },
+    "footer.02": {
+      "ar": "شاد",
+      "en": "Shad"
+    },
+    "social.follow": {
+      "ar": "تابعنا",
+      "en": "Follow us"
+    }
+  }
+}
