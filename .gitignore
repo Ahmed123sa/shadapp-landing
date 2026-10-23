@@ -5,3 +5,9 @@ node_modules/
 *.log
 .DS_Store
 Thumbs.db
+# Written by the admin on the server, never committed
+data/
+# Generated: node tools/render.mjs (the admin does it on publish)
+site/index.html
+# nginx symlink target on the server
+/public/

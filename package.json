@@ -1,0 +1,14 @@
+{
+  "name": "shadapp-landing",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "The Shad app landing page and its small admin. No dependencies.",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "render": "node tools/render.mjs",
+    "admin": "node admin/server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "gate": "node tools/gate.mjs"
+  }
+}

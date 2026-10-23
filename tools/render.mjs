@@ -11,7 +11,7 @@
 //   {{social:contact}}   the social icons block for the contact section, or nothing if there are none
 //   {{social:foot}}      the same icons for the footer
 //   {{config}}           window.SHAD = { titles, descriptions, stores }, read by site.js
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -110,8 +110,13 @@ export function render(content, { template, platforms } = {}) {
   });
 }
 
+/** The published content if the admin has published any, otherwise the seed that ships with the code. */
+export function loadPublished() {
+  const live = resolve(process.env.DATA_DIR || resolve(root, 'data'), 'content.json');
+  return JSON.parse(readFileSync(existsSync(live) ? live : paths.content, 'utf8'));
+}
+
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const content = JSON.parse(readFileSync(paths.content, 'utf8'));
-  writeFileSync(paths.out, render(content));
+  writeFileSync(paths.out, render(loadPublished()));
   console.log('site/index.html written');
 }

@@ -18,7 +18,28 @@ node tools/render.mjs
 ```
 وبعدها افتح `site/index.html` بدبل كليك في Chrome أو Edge. مش محتاجة سيرفر ولا إنترنت.
 
-## تعديل المحتوى (لحد ما لوحة التحكم تتعمل)
+## لوحة التحكم
+
+لوحة صغيرة على `/shad-app/admin/` بتعدّل المحتوى من غير ما تلمس ملفات. مستقلة تمامًا عن الداشبورد والباك إند، ومن غير أي مكتبات خارجية (Node 20 أو أحدث).
+
+- دخول بإيميل أدمن واحد وباسورد. الجلسة بكوكي `HttpOnly` و `SameSite=Strict`، وكل تغيير محمي بـ CSRF، وبعد 5 محاولات غلط بيتقفل الدخول 15 دقيقة.
+- أقسام: عنوان الصفحة ووصفها، الروابط والإيميلات، السوشيال (إضافة وحذف وترتيب)، وكل أقسام الصفحة. النص بالعربي والإنجليزي جنب بعض وليه حد أقصى للحروف.
+- **حفظ المسودة** مش بيغيّر الصفحة المنشورة. **معاينة** بتفتح المسودة كصفحة حقيقية. **نشر** بيكتب الصفحة فورًا وبيحفظ نسخة تقدر ترجع لها من صفحة "النسخ".
+- تغيير الباسورد من صفحة "الحساب"، وبيطلّع كل الأجهزة.
+
+تشغيلها لوكال:
+
+```
+cp .env.example .env
+node admin/hash-password.mjs "باسورد-من-10-حروف-على-الأقل"   # الناتج في ADMIN_PASSWORD_HASH
+# املا ADMIN_EMAIL و SESSION_SECRET (32 حرف على الأقل) في .env
+node admin/server.mjs
+```
+وافتح `http://127.0.0.1:3100/shad-app/admin/`. للنشر على السيرفر شوف `DEPLOY.md`.
+
+أين المحتوى: `content/content.json` هو الأساس اللي بيتشحن مع الكود. اللي بتنشره من اللوحة بيتحفظ في `data/` (مش في git)، و `node tools/render.mjs` بيستخدمه لو موجود.
+
+## تعديل المحتوى من الملف (بديل للوحة)
 
 عدّل `content/content.json` وشغّل `node tools/render.mjs`.
 
@@ -46,6 +67,13 @@ node tools/render.mjs
 ## الاختبارات
 
 ```
+node --test tests/*.test.mjs
+```
+27 اختبار للرندر والتحقق والدخول والجلسات والـ CSRF والنشر والنسخ. وتأكدت إنها بتفشل لو الحماية اتشالت (CSRF، توقيع الجلسة، فحص الروابط، الـ escape).
+
+اختبارات التصميم (الـ kit):
+
+```
 node tools/gate.mjs "G:\coding\Skills\ux-ui-agent-skills\ux-ui-agent-skills"
 ```
 محتاجة `npm install` و `npx playwright install chrome` جوه فولدر الـ kit مرة واحدة.
@@ -68,6 +96,9 @@ node tools/gate.mjs "G:\coding\Skills\ux-ui-agent-skills\ux-ui-agent-skills"
 ## الملفات
 
 ```
+admin/                     لوحة التحكم (server.mjs، lib/، public/)
+tests/                     اختبارات الرندر واللوحة
+DEPLOY.md                  خطوات النشر على السيرفر
 template/index.tpl.html    الهيكل، فيه {{t:مفتاح}} و {{link:..}} و {{email:..}} و {{social:..}}
 content/content.json       المحتوى
 tools/render.mjs           يدمج القالب والمحتوى في site/index.html
