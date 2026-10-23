@@ -10,8 +10,10 @@
 //   {{email:name}}       an address from content.emails
 //   {{social:contact}}   the social icons block for the contact section, or nothing if there are none
 //   {{social:foot}}      the same icons for the footer
+//   {{og:image}} {{og:alt}} {{og:card}}   the share image (lines are dropped when there is none)
+//   <!--shot:app_screen-->...<!--/shot-->   replaced by the uploaded app screenshot when there is one
 //   {{config}}           window.SHAD = { titles, descriptions, stores }, read by site.js
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -23,6 +25,41 @@ export const paths = {
   platforms: resolve(root, 'tools/platforms.json'),
   out: resolve(root, 'site/index.html'),
 };
+
+/** Where uploaded pictures can go. `shape` is checked on upload; `w`/`h` are the recommended size. */
+export const IMAGE_SLOTS = {
+  og: { label: 'صورة المشاركة', shape: 'landscape', minWidth: 600, rec: '1200 × 630', hint: 'بتظهر لما حد يبعت رابط الصفحة على واتساب أو فيسبوك. عريضة (أفقية).' },
+  app_screen: { label: 'صورة التطبيق', shape: 'portrait', minWidth: 300, rec: '1080 × 2200', hint: 'بتحل محل رسمة الموبايل في قسم التطبيق. لقطة شاشة طولية (رأسية).' },
+};
+export const MEDIA_FILE = /^[a-f0-9]{16}\.(png|jpg|webp)$/;
+export const SITE_URL = (process.env.SITE_URL || 'https://shadmanagement.co/shad-app/').replace(/\/?$/, '/');
+
+/** Every slot present, in a fixed shape, so equal content always compares equal. */
+export function canonImages(raw) {
+  const out = {};
+  for (const slot of Object.keys(IMAGE_SLOTS)) {
+    const e = raw?.[slot] || {};
+    const file = typeof e.file === 'string' && MEDIA_FILE.test(e.file) ? e.file : '';
+    out[slot] = {
+      file,
+      alt: { ar: file ? String(e.alt?.ar ?? '') : '', en: file ? String(e.alt?.en ?? '') : '' },
+      w: file ? Number(e.w) || 0 : 0,
+      h: file ? Number(e.h) || 0 : 0,
+    };
+  }
+  return out;
+}
+
+/** Copies the pictures the content uses from the admin's media folder into site/media (what nginx serves). */
+export function syncMedia(content, mediaDir, siteMediaDir = resolve(root, 'site/media')) {
+  for (const e of Object.values(canonImages(content.images))) {
+    if (!e.file) continue;
+    const from = resolve(mediaDir, e.file);
+    if (!existsSync(from)) continue;
+    mkdirSync(siteMediaDir, { recursive: true });
+    copyFileSync(from, resolve(siteMediaDir, e.file));
+  }
+}
 
 export const loadPlatforms = () => JSON.parse(readFileSync(paths.platforms, 'utf8')).platforms;
 
@@ -84,7 +121,17 @@ export function render(content, { template, platforms } = {}) {
     const json = JSON.stringify({ titles, descriptions, stores }).replace(/</g, '\\u003c');
     return `<script>window.SHAD=${json};</script>`;
   };
-  const source = items.length ? tpl : tpl.replace(/^[ \t]*\{\{social:\w+\}\}\r?\n/gm, '');
+  const imgs = canonImages(content.images);
+  const og = imgs.og;
+  let source = items.length ? tpl : tpl.replace(/^[ \t]*\{\{social:\w+\}\}\r?\n/gm, '');
+  if (!og.file) source = source.replace(/^[ \t]*<meta[^\n]*\{\{og:\w+\}\}[^\n]*\r?\n/gm, '');
+  const shot = imgs.app_screen;
+  source = source.replace(/<!--shot:app_screen-->([\s\S]*?)<!--\/shot-->/, (all, inner) => {
+    if (!shot.file) return inner;
+    const dims = shot.w && shot.h ? ` width="${shot.w}" height="${shot.h}"` : '';
+    const img = (lang) => `<img class="${lang}"${lang === 'en' ? ' lang="en"' : ''} src="media/${shot.file}" alt="${esc(shot.alt[lang])}"${dims} loading="lazy" decoding="async">`;
+    return `<div class="phone-wrap"><div class="phone phone--shot">${img('ar')}${img('en')}</div></div>`;
+  });
   return source.replace(/\{\{(\w+):?([\w.]*)\}\}/g, (all, kind, name) => {
     switch (kind) {
       case 't': return pair(name);
@@ -104,6 +151,7 @@ export function render(content, { template, platforms } = {}) {
         if (name === 'contact') return `<div class="social-block"><p class="label">${pair('social.follow')}</p>${socialList(items, 'contact')}</div>`;
         return socialList(items, 'foot');
       }
+      case 'og': return name === 'image' ? esc(SITE_URL + 'media/' + og.file) : name === 'alt' ? esc(og.alt.ar) : 'summary_large_image';
       case 'config': return config();
       default: throw new Error(`unknown placeholder ${all}`);
     }
@@ -117,6 +165,8 @@ export function loadPublished() {
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  writeFileSync(paths.out, render(loadPublished()));
+  const content = loadPublished();
+  syncMedia(content, resolve(process.env.DATA_DIR || resolve(root, 'data'), 'media'));
+  writeFileSync(paths.out, render(content));
   console.log('site/index.html written');
 }

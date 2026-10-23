@@ -6,7 +6,9 @@
 //   site/index.html             generated from template + published content
 import { readFile, writeFile, rename, mkdir, readdir, rm } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { render, loadPlatforms } from '../../tools/render.mjs';
+import { createHash } from 'node:crypto';
+import { existsSync } from 'node:fs';
+import { render, loadPlatforms, canonImages, syncMedia, MEDIA_FILE } from '../../tools/render.mjs';
 
 const VERSION_ID = /^\d{8}T\d{9}Z$/;
 const KEEP_VERSIONS = 100;
@@ -32,7 +34,10 @@ export function createStore({ root, dataDir }) {
     published: resolve(dataDir, 'content.json'),
     draft: resolve(dataDir, 'draft.json'),
     versions: resolve(dataDir, 'versions'),
+    media: resolve(dataDir, 'media'),
+    siteMedia: resolve(root, 'site/media'),
   };
+  const norm = (c) => (c ? { ...c, images: canonImages(c.images) } : c);
   let chain = Promise.resolve();
   const locked = (fn) => { const run = chain.then(fn, fn); chain = run.catch(() => {}); return run; };
   const json = (o) => JSON.stringify(o, null, 2) + '\n';
@@ -41,8 +46,8 @@ export function createStore({ root, dataDir }) {
     paths: p,
     platforms: () => loadPlatforms(),
     async seed() { return readJson(p.seed); },
-    async published() { return (await readJson(p.published)) ?? (await readJson(p.seed)); },
-    async draft() { return readJson(p.draft); },
+    async published() { return norm((await readJson(p.published)) ?? (await readJson(p.seed))); },
+    async draft() { return norm(await readJson(p.draft)); },
     async saveDraft(content) { await mkdir(dataDir, { recursive: true }); await atomicWrite(p.draft, json(content)); },
     async discardDraft() { await rm(p.draft, { force: true }); },
     async renderHtml(content) { return render(content, { template: await readFile(p.template, 'utf8') }); },
@@ -50,6 +55,7 @@ export function createStore({ root, dataDir }) {
     publish(content) {
       return locked(async () => {
         const html = await store.renderHtml(content); // throws before anything is written
+        syncMedia(content, p.media, p.siteMedia);
         await mkdir(p.versions, { recursive: true });
         const id = versionId();
         await atomicWrite(resolve(p.versions, `${id}.json`), json({ id, content }));
@@ -73,7 +79,15 @@ export function createStore({ root, dataDir }) {
     async getVersion(id) {
       if (!VERSION_ID.test(String(id))) return null;
       const v = await readJson(resolve(p.versions, `${id}.json`));
-      return v?.content ?? null;
+      return norm(v?.content ?? null);
+    },
+    mediaExists: (file) => MEDIA_FILE.test(String(file)) && existsSync(resolve(p.media, file)),
+    async saveMedia(buf, ext) {
+      const name = `${createHash('sha256').update(buf).digest('hex').slice(0, 16)}.${ext}`;
+      await mkdir(p.media, { recursive: true });
+      const file = resolve(p.media, name);
+      if (!existsSync(file)) { const tmp = `${file}.${process.pid}.tmp`; await writeFile(tmp, buf); await rename(tmp, file); }
+      return name;
     },
     async readAdmin() { return (await readJson(resolve(dataDir, 'admin.json'))) ?? {}; },
     async writeAdmin(obj) { await mkdir(dataDir, { recursive: true }); await atomicWrite(resolve(dataDir, 'admin.json'), json(obj)); },

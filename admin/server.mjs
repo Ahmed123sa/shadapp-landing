@@ -11,12 +11,16 @@ import { fileURLToPath } from 'node:url';
 import { loadConfig, assertConfig, root } from './lib/config.mjs';
 import { createStore } from './lib/store.mjs';
 import { validateContent, limitsFor } from './lib/validate.mjs';
+import { inspectImage } from './lib/image.mjs';
+import { IMAGE_SLOTS } from '../tools/render.mjs';
 import { hashPassword, verifyPassword, createToken, readToken, csrfFor, checkCsrf, RateLimiter } from './lib/auth.mjs';
 
 const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon', '.txt': 'text/plain; charset=utf-8' };
 const ADMIN_CSP = "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'";
 const PREVIEW_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; frame-ancestors 'self'";
 const MAX_BODY = 1_000_000;
+const MAX_IMAGE = 4_000_000;
+const MAX_SIDE = 6000;
 
 class HttpError extends Error { constructor(status, message, extra) { super(message); this.status = status; this.extra = extra; } }
 
@@ -51,6 +55,12 @@ export function createApp(config, { store = createStore({ root, dataDir: config.
     if (!chunks.length) return {};
     if (!String(req.headers['content-type'] || '').startsWith('application/json')) throw new HttpError(415, 'JSON only');
     try { return JSON.parse(Buffer.concat(chunks).toString('utf8')); } catch { throw new HttpError(400, 'JSON غير صالح'); }
+  }
+
+  async function readRaw(req, limit) {
+    const chunks = []; let size = 0;
+    for await (const c of req) { size += c.length; if (size > limit) throw new HttpError(413, `الصورة أكبر من ${Math.round(limit / 1e6)} ميجا`); chunks.push(c); }
+    return Buffer.concat(chunks);
   }
 
   async function currentHash() { const a = await store.readAdmin(); return a.passwordHash || config.adminPasswordHash; }
@@ -97,6 +107,7 @@ export function createApp(config, { store = createStore({ root, dataDir: config.
       published, draft, hasDraft: !!draft,
       dirty: !!draft && JSON.stringify(draft) !== JSON.stringify(published),
       limits: limitsFor(seed), platforms,
+      imageSlots: Object.entries(IMAGE_SLOTS).map(([id, v]) => ({ id, ...v })),
       sections: seed.sections,
     };
   }
@@ -134,7 +145,7 @@ export function createApp(config, { store = createStore({ root, dataDir: config.
     if (rel === '/api/draft' && method === 'PUT') {
       await mustBeSignedIn(req, { change: true });
       const body = await readBody(req);
-      const v = validateContent(body.content, await store.seed(), store.platforms());
+      const v = validateContent(body.content, await store.seed(), store.platforms(), { mediaExists: store.mediaExists });
       if (!v.ok) return sendJson(res, 422, { errors: v.errors });
       await store.saveDraft(v.value);
       const published = await store.published();
@@ -149,10 +160,26 @@ export function createApp(config, { store = createStore({ root, dataDir: config.
       await mustBeSignedIn(req, { change: true });
       const draft = await store.draft();
       if (!draft) throw new HttpError(409, 'مفيش تعديلات محفوظة تتنشر');
-      const v = validateContent(draft, await store.seed(), store.platforms());
+      const v = validateContent(draft, await store.seed(), store.platforms(), { mediaExists: store.mediaExists });
       if (!v.ok) return sendJson(res, 422, { errors: v.errors });
       const { id } = await store.publish(v.value);
       return sendJson(res, 200, { ok: true, id });
+    }
+    if (rel === '/api/media' && method === 'POST') {
+      await mustBeSignedIn(req, { change: true });
+      const slot = url.searchParams.get('slot') || '';
+      const spec = IMAGE_SLOTS[slot];
+      if (!spec) throw new HttpError(422, 'مكان الصورة غير معروف');
+      if (!/^image\/(png|jpeg|webp)$/.test(String(req.headers['content-type'] || ''))) throw new HttpError(415, 'الصور المقبولة: PNG أو JPG أو WebP');
+      const buf = await readRaw(req, MAX_IMAGE);
+      const info = inspectImage(buf);
+      if (!info) throw new HttpError(415, 'الملف ده مش صورة PNG أو JPG أو WebP سليمة');
+      if (info.width > MAX_SIDE || info.height > MAX_SIDE) throw new HttpError(422, `الصورة كبيرة (${info.width}×${info.height}). الحد الأقصى ${MAX_SIDE} بكسل في أي اتجاه`);
+      if (info.width < spec.minWidth) throw new HttpError(422, `الصورة صغيرة (${info.width} بكسل عرض). المطلوب ${spec.minWidth} على الأقل، والأفضل ${spec.rec}`);
+      if (spec.shape === 'landscape' && info.width <= info.height) throw new HttpError(422, 'الصورة دي لازم تكون عريضة (الطول أصغر من العرض)');
+      if (spec.shape === 'portrait' && info.height <= info.width) throw new HttpError(422, 'الصورة دي لازم تكون طولية (الطول أكبر من العرض)');
+      const file = await store.saveMedia(buf, info.ext);
+      return sendJson(res, 200, { file, w: info.width, h: info.height });
     }
     if (rel === '/api/versions' && method === 'GET') { await mustBeSignedIn(req); return sendJson(res, 200, { versions: await store.listVersions() }); }
     if (rel === '/api/versions/restore' && method === 'POST') {
@@ -160,7 +187,7 @@ export function createApp(config, { store = createStore({ root, dataDir: config.
       const body = await readBody(req);
       const content = await store.getVersion(body.id);
       if (!content) throw new HttpError(404, 'النسخة مش موجودة');
-      const v = validateContent(content, await store.seed(), store.platforms());
+      const v = validateContent(content, await store.seed(), store.platforms(), { mediaExists: store.mediaExists });
       if (!v.ok) return sendJson(res, 422, { errors: v.errors });
       await store.saveDraft(v.value);
       return sendJson(res, 200, { ok: true });
@@ -199,6 +226,7 @@ export function createApp(config, { store = createStore({ root, dataDir: config.
         const content = (await store.draft()) ?? (await store.published());
         return send(res, 200, await store.renderHtml(content), { ...securityHeaders(PREVIEW_CSP), 'Content-Type': 'text/html; charset=utf-8', 'X-Robots-Tag': 'noindex' });
       }
+      if (rel.startsWith('/preview/media/')) return serveFile(res, store.paths.media, rel.slice('/preview/media/'.length), { headers: { 'Cache-Control': 'private, max-age=300' } });
       return serveFile(res, siteDir, rel.slice('/preview/'.length), { headers: { 'Cache-Control': 'no-cache' } });
     }
 

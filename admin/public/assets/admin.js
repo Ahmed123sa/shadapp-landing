@@ -7,7 +7,7 @@ const RM = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 const S = {
   user: null, csrf: '', loaded: false,
-  published: null, savedDraft: null, draft: null, limits: null, platforms: [], sections: {},
+  published: null, savedDraft: null, draft: null, limits: null, platforms: [], imageSlots: [], sections: {},
   view: 'meta', errors: {},
 };
 
@@ -106,7 +106,7 @@ function statusInfo() {
 async function loadContent() {
   const c = await api('/content');
   S.published = c.published; S.savedDraft = c.draft; S.draft = clone(c.draft ?? c.published);
-  S.limits = c.limits; S.platforms = c.platforms; S.sections = c.sections; S.loaded = true;
+  S.limits = c.limits; S.platforms = c.platforms; S.imageSlots = c.imageSlots || []; S.sections = c.sections; S.loaded = true;
 }
 
 function setErrors(list) { S.errors = {}; for (const e of list) S.errors[e.path] = e.message; }
@@ -115,6 +115,7 @@ function sectionOfPath(path) {
   if (a === 'meta') return 'meta';
   if (a === 'links' || a === 'emails') return 'links';
   if (a === 'social') return 'social';
+  if (a === 'images') return 'images';
   if (a === 'text') return b === 'social' ? 'social' : b;
   return 'meta';
 }
@@ -238,6 +239,60 @@ function socialPanel() {
   return [list, add, h('div', { class: 'cards' }, textField('social.follow', 'text'))];
 }
 
+async function uploadImage(slot, file) {
+  const res = await fetch(`${BASE}/api/media?slot=${encodeURIComponent(slot)}`, { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': file.type, 'X-CSRF-Token': S.csrf }, body: file });
+  let data = {};
+  try { data = await res.json(); } catch { /* empty */ }
+  if (!res.ok) { const e = new Error(data.error || 'فشل رفع الصورة'); e.status = res.status; throw e; }
+  return data;
+}
+
+function imagesPanel() {
+  const d = S.draft;
+  d.images = d.images || {};
+  return [h('div', { class: 'cards' }, S.imageSlots.map((slot) => {
+    const cur = d.images[slot.id] = d.images[slot.id] || { file: '', alt: { ar: '', en: '' }, w: 0, h: 0 };
+    const box = h('div', { class: 'card img' });
+    const draw = () => {
+      const fileInput = h('input', { class: 'sr-only', id: `i-${slot.id}-f`, type: 'file', accept: 'image/png,image/jpeg,image/webp', 'aria-label': slot.label, tabindex: '-1' });
+      const pick = h('button', { class: 'btn btn--secondary', type: 'button', onclick: () => fileInput.click() }, icon('plus'), h('span', {}, cur.file ? 'استبدال الصورة' : 'اختيار صورة'));
+      const note = h('p', { class: 'err', role: 'alert', hidden: true });
+      fileInput.addEventListener('change', async () => {
+        const f = fileInput.files[0]; if (!f) return;
+        note.hidden = true;
+        if (f.size > 4_000_000) { note.textContent = 'الصورة أكبر من 4 ميجا'; note.hidden = false; return; }
+        busy(pick, true);
+        try {
+          const r = await uploadImage(slot.id, f);
+          cur.file = r.file; cur.w = r.w; cur.h = r.h; delete S.errors[`images.${slot.id}.file`];
+          draw(); refreshChrome(); toast('اتحطت الصورة في المسودة. اكتب الوصف بالعربي والإنجليزي.');
+          document.getElementById(`i-${slot.id}-ar`)?.focus();
+        } catch (e) {
+          busy(pick, false);
+          if (e.status === 401) { await toLogin(); return; }
+          note.textContent = e.message; note.hidden = false;
+        }
+      });
+      const altField = (lang) => simpleField({ id: `i-${slot.id}-${lang}`, label: lang === 'ar' ? 'وصف الصورة (عربي)' : 'Image description (English)', hint: lang === 'ar' ? 'بيقراه قارئ الشاشة، ومهم لو الصورة ما اتحملتش.' : undefined, value: cur.alt[lang], path: `images.${slot.id}.alt.${lang}`, dir: lang === 'ar' ? 'rtl' : 'ltr', set: (v) => { cur.alt[lang] = v; } });
+      const kids = [h('div', {}, h('h3', { class: 'soc__name' }, slot.label), h('p', { class: 'hint' }, `${slot.hint} المقاس الأفضل ${slot.rec}. PNG أو JPG أو WebP، لحد 4 ميجا.`))];
+      if (cur.file) {
+        kids.push(h('img', { class: `img__prev img__prev--${slot.shape}`, src: `${BASE}/preview/media/${cur.file}`, alt: cur.alt.ar || slot.label, width: cur.w || false, height: cur.h || false }));
+        kids.push(h('p', { class: 'hint' }, `${cur.w} × ${cur.h} بكسل`));
+        if (S.errors[`images.${slot.id}.file`]) kids.push(h('p', { class: 'err' }, S.errors[`images.${slot.id}.file`]));
+        kids.push(h('div', { class: 'pair' }, altField('ar'), altField('en')));
+      } else kids.push(h('p', { class: 'empty' }, 'مفيش صورة. الصفحة شغالة من غيرها.'));
+      kids.push(h('div', { class: 'img__btns' }, fileInput, pick,
+        cur.file && h('button', { class: 'btn btn--quiet', type: 'button', onclick: async () => {
+          if (!(await confirmDialog({ title: 'شيل الصورة؟', text: 'هتتشال من المسودة. الصفحة المنشورة مش هتتغير غير لما تدوس نشر.', ok: 'شيل', danger: true }))) return;
+          cur.file = ''; cur.w = 0; cur.h = 0; cur.alt = { ar: '', en: '' }; draw(); refreshChrome(); toast('اتشالت من المسودة');
+        } }, icon('trash'), h('span', {}, 'شيل الصورة'))), note);
+      box.replaceChildren(...kids);
+    };
+    draw();
+    return box;
+  }))];
+}
+
 function textPanel(id) {
   const keys = Object.keys(S.draft.text).filter((k) => k.startsWith(id + '.'));
   return [h('div', { class: 'cards' }, keys.map((k) => textField(k, 'text')))];
@@ -246,12 +301,13 @@ function textPanel(id) {
 const SPECIAL = {
   meta: ['عنوان الصفحة ووصفها', 'اللي بيظهر في تبويب المتصفح وفي نتائج جوجل وعند مشاركة الرابط.'],
   links: ['الروابط والإيميلات', 'روابط الدخول، روابط المتاجر، وإيميلات التواصل والدعم.'],
+  images: ['الصور', 'الصور اللي بتظهر في الصفحة. الرفع بيحط الصورة في المسودة، ولازم تدوس نشر عشان تظهر للناس.'],
   social: ['السوشيال ميديا', 'الحسابات اللي بتظهر في الفوتر وقسم التواصل. الحساب اللي رابطه فاضي مش بيظهر.'],
 };
 
 function sectionList() {
   const order = Object.keys(S.sections).filter((k) => !['meta', 'social'].includes(k));
-  return [['meta', SPECIAL.meta[0]], ['links', SPECIAL.links[0]], ['social', SPECIAL.social[0]], ...order.map((k) => [k, S.sections[k]])];
+  return [['meta', SPECIAL.meta[0]], ['links', SPECIAL.links[0]], ['social', SPECIAL.social[0]], ['images', SPECIAL.images[0]], ...order.map((k) => [k, S.sections[k]])];
 }
 
 let chrome = {};
@@ -273,7 +329,7 @@ function editorView() {
   const sections = sectionList();
   const title = SPECIAL[S.view]?.[0] ?? S.sections[S.view] ?? S.view;
   const desc = SPECIAL[S.view]?.[1] ?? 'عدّل النص بالعربي والإنجليزي. فيه حد أقصى للحروف عشان التصميم ما يبوظش.';
-  const body = S.view === 'meta' ? metaPanel() : S.view === 'links' ? linksPanel() : S.view === 'social' ? socialPanel() : textPanel(S.view);
+  const body = S.view === 'meta' ? metaPanel() : S.view === 'links' ? linksPanel() : S.view === 'social' ? socialPanel() : S.view === 'images' ? imagesPanel() : textPanel(S.view);
 
   const nav = h('nav', { class: 'nav', 'aria-label': 'الأقسام' });
   chrome.nav = sections.map(([id, label]) => {

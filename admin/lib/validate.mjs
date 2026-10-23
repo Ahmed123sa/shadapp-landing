@@ -1,7 +1,7 @@
 // Checks content before it is saved or published. The seed (content/content.json)
 // defines which keys exist and how long each text may be, so an edit can never
 // remove a text the page needs or grow one past what the design holds.
-import { safeUrl, whatsappUrl } from '../../tools/render.mjs';
+import { safeUrl, whatsappUrl, IMAGE_SLOTS, MEDIA_FILE, canonImages } from '../../tools/render.mjs';
 
 const LINK_KEYS = ['client_login', 'team_login', 'play', 'apple'];
 const REQUIRED_LINKS = new Set(['client_login', 'team_login']);
@@ -32,10 +32,10 @@ function checkString(value, limit, path, errors, { required = true, token = true
   return v;
 }
 
-export function validateContent(input, seed, platforms) {
+export function validateContent(input, seed, platforms, { mediaExists } = {}) {
   const errors = [];
   const limits = limitsFor(seed);
-  const out = { version: 1, meta: {}, links: {}, emails: {}, social: [], sections: seed.sections, text: {} };
+  const out = { version: 1, meta: {}, links: {}, emails: {}, social: [], sections: seed.sections, images: {}, text: {} };
   const src = input && typeof input === 'object' ? input : {};
 
   for (const key of Object.keys(seed.meta)) {
@@ -86,5 +86,23 @@ export function validateContent(input, seed, platforms) {
     }
     out.social.push(entry);
   });
+
+  const rawImages = src.images && typeof src.images === 'object' ? src.images : {};
+  for (const slot of Object.keys(IMAGE_SLOTS)) {
+    const e = rawImages[slot] || {};
+    const file = typeof e.file === 'string' ? e.file.trim() : '';
+    const base = `images.${slot}`;
+    if (file) {
+      if (!MEDIA_FILE.test(file)) errors.push({ path: `${base}.file`, message: 'اسم الملف غير صحيح' });
+      else if (mediaExists && !mediaExists(file)) errors.push({ path: `${base}.file`, message: 'الصورة مش موجودة على السيرفر، ارفعها تاني' });
+      for (const lang of ['ar', 'en']) {
+        const alt = checkString(e.alt?.[lang] ?? '', 140, `${base}.alt.${lang}`, errors, { required: true, token: false });
+        if (e.alt && typeof e.alt[lang] === 'string') e.alt[lang] = alt;
+      }
+    }
+    const w = Number(e.w), h = Number(e.h);
+    if (file && !(Number.isInteger(w) && Number.isInteger(h) && w > 0 && h > 0 && w <= 10000 && h <= 10000)) errors.push({ path: `${base}.file`, message: 'مقاس الصورة غير معروف، ارفعها تاني' });
+  }
+  out.images = canonImages(rawImages);
   return { ok: errors.length === 0, errors, value: out };
 }

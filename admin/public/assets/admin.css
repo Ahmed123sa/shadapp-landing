@@ -103,6 +103,13 @@ html[dir="ltr"] .loader { transform: scaleX(-1); }
 .add { display: grid; gap: var(--space-3); }
 .add__list { display: flex; flex-wrap: wrap; gap: var(--space-2); }
 
+/* images */
+.img { position: relative; }
+.img__prev { display: block; max-inline-size: 100%; block-size: auto; border: var(--size-hairline) solid var(--color-border-strong); border-radius: var(--radius-md); background: var(--color-surface-sunken); }
+.img__prev--landscape { inline-size: min(100%, 28rem); }
+.img__prev--portrait { inline-size: min(100%, 12rem); }
+.img__btns { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
 /* versions */
 .vers { display: grid; gap: var(--space-3); }
 .vers__row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); padding: var(--space-4); border: var(--size-hairline) solid var(--color-card-border); border-radius: var(--radius-card); background: var(--color-card-bg); }

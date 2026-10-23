@@ -11,3 +11,5 @@ data/
 site/index.html
 # nginx symlink target on the server
 /public/
+# Pictures uploaded from the admin (copied here on publish)
+site/media/
