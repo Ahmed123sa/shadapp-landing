@@ -166,8 +166,8 @@ html[dir="ltr"] .ico--dir { transform: scaleX(-1); }
   min-block-size: var(--size-control-md); min-inline-size: var(--size-control-md);
   color: var(--color-text-primary); text-decoration: none; border-radius: var(--radius-sm);
 }
-.brand__mark { inline-size: var(--size-icon-lg); block-size: var(--size-control-sm); fill: currentColor; }
-.brand__name { display: none; color: var(--color-text-secondary); font-size: var(--text-sm); }
+.brand__wm { inline-size: calc(var(--size-control-sm) * 2.07); block-size: var(--size-control-sm); fill: currentColor; direction: ltr; overflow: visible; }
+.brand__dot { fill: var(--color-accent-dot); }
 .top__nav { display: none; }
 .top__end { margin-inline-start: auto; display: flex; align-items: center; gap: var(--space-2); }
 .lang .ico { display: none; }
@@ -618,7 +618,6 @@ html[data-l="en"] .foot__line { font-style: italic; }
 
 /* ------------------------------------------------------------ wider screens */
 @media (min-width: 30rem) {
-  .brand__name { display: inline; }
   .lang .ico { display: block; }
   .actions .btn { flex: 0 0 auto; }
 }

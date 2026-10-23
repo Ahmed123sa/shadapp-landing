@@ -31,19 +31,19 @@
   "social": [
     {
       "platform": "facebook",
-      "url": ""
+      "url": "https://facebook.com/shadmanagement"
     },
     {
       "platform": "instagram",
-      "url": ""
+      "url": "https://instagram.com/shadmanagement"
     },
     {
       "platform": "tiktok",
-      "url": ""
+      "url": "https://tiktok.com/@shadmanagement"
     },
     {
       "platform": "whatsapp",
-      "number": ""
+      "number": "201001234567"
     }
   ],
   "sections": {
@@ -65,10 +65,6 @@
     "header.01": {
       "ar": "انتقل إلى المحتوى",
       "en": "Skip to content"
-    },
-    "header.02": {
-      "ar": "تطبيق شاد",
-      "en": "Shad app"
     },
     "header.03": {
       "ar": "رحلتك",
